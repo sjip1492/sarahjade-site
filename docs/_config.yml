@@ -1,0 +1,21 @@
+# Site settings
+title: &name JULIETA GOZALO
+email: juliegozalo@gmail.com
+description: &description JULIETA GOZALO, ACTOR | SINGER | MUSICIAN
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://juliegoz.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+minimal_mistakes_skin: "contrast"
+website_cred: "Sarah Jade"
+website_cred_link: "https://sarahjade.ca"
+# Build settings
+markdown: kramdown
+remote_theme: "mmistakes/minimal-mistakes@4.19.3"
+plugins:
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed 
