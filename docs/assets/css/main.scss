@@ -138,24 +138,36 @@ html
     main {
         position: relative;
     }
+    .hero-img {
+        height: 100%;
+        position: fixed;
+        
+        @include breakpoint($medium) {
+            // padding-top: 50px;
+        }
+    }
     .initial-content {
         margin: 0 auto;
         max-width: 1280px;
+    }
+    .section-background {
     }
 
     .text-button-wrapper {
         margin-bottom: 1em;
         padding: 8px;
-        position: absolute;
         text-align: bottom left;
         top: 50%;
         width: 30%;
         text-shadow: 0.5px 0.5px rgba(0, 0, 0, 0.3);
+        position: fixed;
 
         @include breakpoint($medium) {
             top: 50%;
             margin: 3em;
             width: 33.33%;
+            // position: absolute;
+
         }
 
         h1 {
