@@ -7,9 +7,18 @@ header_text: Sarah is a programmer and musician in the Vancouver area.
 ---
 Contact for resume, website inquiries, gigs, etc.
 
-instagram: @lowerbackhurts
-
 
 email: sarahjadepratt@gmail.com
 
 
+instagram: @lowerbackhurts
+
+
+soundcloud: @leisurenoise
+
+
+github: @sjip1492
+
+
+
+:)
