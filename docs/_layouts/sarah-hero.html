@@ -1,0 +1,38 @@
+---
+---
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include_cached skip-links.html %}
+    {% include_cached browser-upgrade.html %}
+    {% include_cached masthead.html %}
+    <main>
+      <div class="section-background fade-in-scroll">
+        <!-- <img src="{{ site.baseurl }}{{ page.fullpage_hero_image }}"> -->
+        <img src="{{ page.fullpage_hero_image }}">
+        {% if page.title_image_header or page.title %}
+          {% include title_image.html %}
+        {% endif %}
+      </div>
+      
+      <div id="main" role="main">
+        <div class="initial-content">
+          {{ content }}
+        </div>
+      </div>
+  </main>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include_cached footer.html %}
+      </footer>
+    </div>
+    {% include scripts.html %}
+  </body>
+</html>

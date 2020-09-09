@@ -1,9 +1,9 @@
 # Site settings
-title: &name JULIETA GOZALO
-email: juliegozalo@gmail.com
-description: &description JULIETA GOZALO, ACTOR | SINGER | MUSICIAN
+title: &name Sarah Jade
+email: sarahjadepratt@gmail.com
+description: &description Sarah Jade, Programmer | Musician
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://juliegoz.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://sjip1492.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 minimal_mistakes_skin: "contrast"
 website_cred: "Sarah Jade"
 website_cred_link: "https://sarahjade.ca"

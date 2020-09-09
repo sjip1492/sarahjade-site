@@ -1,0 +1,394 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+
+// STYLING VARIABLES
+$darker-main-color:  #5e9376;
+$element-roundedness: 5px;
+$fade-in-length: 0.5s;
+$main-color:  #80cca2;
+
+
+// TYPOGRAPHY OVERRIDES
+/* system typefaces */
+$serif: Georgia, Times, serif !default;
+$garamond: Garamond, serif !default;
+$global-font-family: $garamond !default;
+$header-font-family: $garamond !default;
+$caption-font-family: $garamond !default;
+
+
+// SITE-WIDE STYLING
+body {
+    font-family: $garamond !important;
+    height: 100%;
+
+    h1, h2, h3 {
+        color: $main-color;
+        letter-spacing: 1.5px;
+    }
+
+    h1 {
+        font-weight: 550;
+        font-size: 35px;
+        font-style: italic;
+    }
+
+    h2 {
+        font-weight: 400;
+        font-size: 28px;
+        font-style: italic;
+    }
+
+    h3 {
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+            
+html
+{
+    height: 100%;
+}
+
+.intial-content {
+    background-color: white !important;
+}
+
+// MASTHEAD/NAVIIGATION BAR STYLING
+.masthead {
+    border-bottom: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .masthead__inner-wrap {
+        font-family: $garamond !important;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    a.site-title {
+        display: contents;
+
+        &:hover {
+            color: #000000 !important;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+    
+    .site-title-container {
+        @include breakpoint($medium) {
+            font-size: 18px;
+            width: 50%;
+        }
+    }
+    
+    #site-nav {
+        background: none;
+    }
+}
+
+#main {
+    padding-top: 50px;
+}
+
+.greedy-nav__toggle {
+    &:hover {
+        .navicon, .navicon::before, .navicon::after {
+            background: $darker-main-color !important;
+        }
+    }
+    .navicon, .navicon::before, .navicon::after {
+        background: #000000 !important;
+    }
+}
+
+.greedy-nav .visible-links {
+    a {
+        &::before {
+            background: $main-color;
+        }
+    }
+}
+
+
+// HOMEPAGE STYLING
+.layout--sarah-home {
+
+    // HOMEPAGE OVERALL STYLING
+    #main {
+        // border-top: 5px solid $main-color;
+        max-width: none;
+        padding-top: 0;
+
+        @include breakpoint($medium) {
+            // padding-top: 50px;
+        }
+    }
+    main {
+        position: relative;
+    }
+    .initial-content {
+        margin: 0 auto;
+        max-width: 1280px;
+    }
+
+    .text-button-wrapper {
+        margin-bottom: 1em;
+        padding: 8px;
+        position: absolute;
+        text-align: bottom left;
+        top: 50%;
+        width: 30%;
+        text-shadow: 0.5px 0.5px rgba(0, 0, 0, 0.3);
+
+        @include breakpoint($medium) {
+            top: 50%;
+            margin: 3em;
+            width: 33.33%;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .btn {
+            background: transparent;
+            border-color: white;
+            border-radius: 0;
+            color: white;
+            font-family: $garamond !important;
+            padding: 1em 1.5em;
+            transition: background $fade-in-length ease-out;
+            
+            &:hover {
+                background: rgba(0, 0, 0, 0.5);
+                transition: background $fade-in-length ease-in;
+            }
+        }
+    }
+
+    // HOMEPAGE MASTHEAD STYLING
+    .masthead {
+        background: transparent;
+        text-shadow: 0.5px 0.5px rgba(0, 0, 0, 0.3);
+        // transition: background $fade-in-length ease-out;
+
+        .site-title-container {
+            @include breakpoint($medium) {
+                text-align: right;
+            }
+        }
+
+        &:hover {
+            // background: rgba(0, 0, 0, 0.5);
+            // transition: background $fade-in-length ease-in;
+        }
+        
+        .greedy-nav {
+            a {
+                color: #000000 !important;
+            }
+        }
+    }
+    
+    // HOMEPAGE FOOTER STYLING
+    #footer {
+        margin-top: 0;    
+        position: absolute;
+        background: transparent;
+        bottom: 0;
+
+        footer {
+            margin-left: 3em;
+            max-width: none;
+            padding-bottom: 1em;
+        }
+        .page__footer-copyright {
+            color: white;
+        }
+    }    
+
+    h2 {
+        @include breakpoint($medium) {
+            margin: 0;
+            padding: 0 20px;
+        }
+    }
+}
+
+
+.section-background {
+    max-height: 100vh;
+    overflow: hidden;
+
+    img {
+        width: 100%; 
+        height: auto; 
+        object-fit: cover;
+
+    }
+}
+
+
+// ABOUT STYLING
+.layout--sarah-about {
+    .masthead {
+        position: relative;
+    }
+
+    #main {
+        border-top: 5px solid $main-color;
+        margin: 0;
+        max-width: none;
+    }
+    .section-background {
+        height: 35vh;
+        position: relative;
+    }
+
+    .text-button-wrapper {   
+        position: absolute;
+        top: 50%;
+        padding-left: 1em;
+
+        h1 { 
+            color: white;
+
+            @include breakpoint($medium) {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+        
+        @include breakpoint($medium) {
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+    .about-text {
+        color: $darker-main-color;
+        float: none;
+        margin: 0 auto;
+        padding-right: 1em;
+        text-align: justify;
+
+        h2 {
+            color: $darker-main-color;
+            font-size: 25px;
+            font-weight: 200;
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        > p:not(:last-child){
+            margin-bottom: 1.5em;
+        }
+
+        @include breakpoint($medium) {
+            font-size: 16px;
+            width: 50%;
+        }
+    }
+}
+
+
+// RESUME STYLING
+.layout--sarah-resume {
+    h2 {
+        margin: 0;
+    }
+
+    .initial-content {
+        @include breakpoint($medium) {
+            margin: 0 auto;
+            width: 65%;
+        }
+    }
+
+    .resume-iframe {
+        display: block;
+        width: 100%;
+        min-height: 400px;
+
+        @include breakpoint($medium) {
+            min-height: 700px;
+        }
+    }
+
+    .dl-link {
+        color: black;
+    }
+
+    div.resumes > div.resume:not(:last-child)
+    { 
+        padding-bottom: 2em;
+    }
+}
+
+
+// MEDIA STYLING
+.layout--sarah-media {
+    #main {
+        @include breakpoint($medium) {
+            float: center;
+            width: calc(100% - 200px);
+            padding-right: 200px;
+        }
+    }
+
+    .overall-figure {
+        columns: 2;
+        column-gap: 0;
+    }
+
+    .crop {
+        margin: 0.25%;
+
+        img {
+            border-radius: 0;
+            margin: 0;
+        }
+    }
+}
+
+
+// CONTACT STYLING
+.layout--sarah-contact {
+    iframe {
+        width: 100%;
+    }
+}
+
+
+// FOOTER STYLING
+#footer {
+    background-color: white;
+
+    .page__footer-copyright {
+        font-family: $garamond !important;
+        color: black;
+        margin-top: 0;
+    }
+
+    a:hover {
+        color: $main-color;
+        text-decoration: none;
+    }
+}
+
+
+// STYLING FOR JS EFFECTS
+.fade-in-scroll {
+    // opacity: 0;
+}
