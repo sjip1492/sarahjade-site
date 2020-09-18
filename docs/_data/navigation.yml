@@ -1,9 +1,10 @@
 main:
-  # - title: "ABOUT"
-  #   url: /about/
-  # - title: "RESUME"
-  #   url: /resume/
-  # - title: "PROJECTS"
-  #   url: /projects/
+  - title: "ABOUT"
+    url: /about/
   - title: "CONTACT"
     url: /contact/
+  - title: "CV"
+    url: /cv/
+  - title: "PROJECTS"
+    url: /projects/
+  

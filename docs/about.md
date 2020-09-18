@@ -1,8 +1,9 @@
 ---
 layout: sarah-about
 permalink: /about/
-title: ABOUT
-fullpage_hero_image: "/assets/images/20200823_131949.jpg"
-header_text: Sarah is a programmer and musician in the Vancouver areas. 
+image: "/assets/images/106023021_320500042280720_6922133975585030017_n.jpg"
+header_text: About Sarah
 ---
-hi sarah me
+Hello (world)! I am a programmer and musician in the Vancouver area.
+
+In my free time, you can find me making music, taking online programming courses, taunting my 3 cats, and swimming/running/hiking.

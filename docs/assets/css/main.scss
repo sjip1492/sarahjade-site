@@ -96,6 +96,9 @@ html
     #site-nav {
         background: none;
     }
+    .search__toggle {
+        color: black;
+    }
 }
 
 #main {
@@ -129,7 +132,7 @@ html
     #main {
         // border-top: 5px solid $main-color;
         max-width: none;
-        padding-top: 0;
+        padding: 0;
 
         @include breakpoint($medium) {
             // padding-top: 50px;
@@ -153,6 +156,9 @@ html
     .section-background {
     }
 
+    .search-content {
+        background: rgba(255, 255, 255, 0.75);
+    }
     .text-button-wrapper {
         margin-bottom: 1em;
         padding: 8px;
@@ -222,9 +228,12 @@ html
         bottom: 0;
 
         footer {
-            margin-left: 3em;
             max-width: none;
             padding-bottom: 1em;
+            
+            @include breakpoint($medium) {
+                margin-left: 3em;
+            }
         }
         .page__footer-copyright {
             color: white;
@@ -258,58 +267,31 @@ html
     .masthead {
         position: relative;
     }
-
-    #main {
-        border-top: 5px solid $main-color;
-        margin: 0;
-        max-width: none;
+    .about-container {
+        max-width: 1280px;
+        margin: 0 auto;
     }
-    .section-background {
-        height: 35vh;
-        position: relative;
-    }
+    .about-image-container {
+        width: 50%;
+        float: left;
+        padding: 50px;
 
-    .text-button-wrapper {   
-        position: absolute;
-        top: 50%;
-        padding-left: 1em;
-
-        h1 { 
-            color: white;
-
-            @include breakpoint($medium) {
-                width: 50%;
-                margin: 0 auto;
-            }
-        }
-        
         @include breakpoint($medium) {
-            width: 100%;
             padding-left: 0;
         }
     }
     .about-text {
-        color: $darker-main-color;
-        float: none;
-        margin: 0 auto;
-        padding-right: 1em;
+        width: 50%;
+        float: right;
+        padding: 50px;
         text-align: justify;
 
-        h2 {
-            color: $darker-main-color;
-            font-size: 25px;
-            font-weight: 200;
+        h2 { 
             margin-top: 0;
-            margin-bottom: 1em;
-        }
-
-        > p:not(:last-child){
-            margin-bottom: 1.5em;
         }
 
         @include breakpoint($medium) {
-            font-size: 16px;
-            width: 50%;
+            padding-right: 0;
         }
     }
 }
@@ -403,4 +385,37 @@ html
 // STYLING FOR JS EFFECTS
 .fade-in-scroll {
     // opacity: 0;
+}
+
+// UTIL STYLING
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+// .content {
+//   padding: 0 18px;
+//   display: none;
+//   overflow: hidden;
+//   background-color: #f1f1f1;
+// }
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }

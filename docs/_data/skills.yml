@@ -1,0 +1,9 @@
+main:
+  # - title: "ABOUT"
+  #   url: /about/
+  # - title: "RESUME"
+  #   url: /resume/
+  # - title: "PROJECTS"
+  #   url: /projects/
+  - title: "CONTACT"
+    url: /contact/

@@ -15,15 +15,21 @@
       <div class="section-background fade-in-scroll">
         <!-- <img src="{{ site.baseurl }}{{ page.fullpage_hero_image }}"> -->
         <img src="{{ page.fullpage_hero_image }}" class="hero-img">
-        {% if page.title_image_header or page.title %}
+        <!-- {% if page.title_image_header or page.title %}
           {% include title_image.html %}
-        {% endif %}
+        {% endif %} -->
       </div>
       
       <div id="main" role="main">
         <div class="initial-content">
           {{ content }}
         </div>
+
+        {% if site.search == true %}
+          <div class="search-content">
+            {% include_cached search/search_form.html %}
+          </div>
+        {% endif %}
       </div>
   </main>
 

@@ -2,23 +2,20 @@
 layout: sarah-contact
 permalink: /contact/
 title: Contact
-fullpage_hero_image: "/assets/images/20200823_131949.jpg"
-header_text: Sarah is a programmer and musician in the Vancouver area.
 ---
-Contact for resume, website inquiries, gigs, etc.
+Contact for references, transcripts, inquiries, etc.
 
 
-email: sarahjadepratt@gmail.com
+email: [Here](mailto:sarahjadepratt@gmail.com)
 
 
-instagram: @lowerbackhurts
+instagram: [@lowerbackhurts](https://instagram.com/lowerbackhurts)
 
 
-soundcloud: @leisurenoise
+soundcloud: [@leisurenoise](https://soundcloud.com/leisurenoise)
 
 
-github: @sjip1492
-
+github: [@sjip1492](https://github.com/sjip1492/)
 
 
 :)
