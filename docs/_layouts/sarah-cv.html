@@ -11,7 +11,7 @@ layout: archive
 				{% if education.date %}<p>{{ education.date }}</p>{% endif %}
 
 				{% if education.minors %}
-					<h4 class="cv-sub-title">Minor:</h4>
+					<p class="cv-sub-title">Minor:</p>
 					<ul class="cv-sub-section">
 						{% for minor in education.minors %}  
 							<li>{{ minor }}</li>
@@ -28,7 +28,7 @@ layout: archive
 				{% endif %}
 
 				{% if education.awards %}
-					<h4 class="cv-sub-title">Awards:</h4>
+					<p class="cv-sub-title">Awards:</p>
 					<ul class="cv-sub-section">
 						{% for award in education.awards %}  
 							<li>{{ award }}</li>
@@ -43,7 +43,9 @@ layout: archive
 {% if site.tags['experience'] %}
 	<h2 class="cv-title">Work Experience</h2>
 	<div class="cv-section">
-		{% include posts-tag-exp.html taxonomy='experience' type='list' %}
+		<ul>
+			{% include posts-tag.html taxonomy='experience' display_type='experience' type='list' %}
+		</ul>
 	</div>
 {% endif %}
 
@@ -57,7 +59,7 @@ layout: archive
 					{{ skill }}
 				</button>
 				<div class="skill-posts content">
-					{% include posts-tag-skill.html taxonomy=skill type='grid' %}
+					{% include posts-tag.html taxonomy=skill display_type='skill' type='grid' %}
 				</div>
 			</div>
 		{% endif %}

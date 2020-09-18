@@ -8,10 +8,12 @@
 
 
 // STYLING VARIABLES
-$darker-main-color:  #5e9376;
 $element-roundedness: 5px;
 $fade-in-length: 0.5s;
-$main-color:  #80cca2;
+
+$main-color:  #9dbedb;
+$lighter-main-color: #accae5;
+$darker-main-color:  #738ba0;
 
 
 // TYPOGRAPHY OVERRIDES
@@ -108,7 +110,7 @@ html
 .greedy-nav__toggle {
     &:hover {
         .navicon, .navicon::before, .navicon::after {
-            background: $darker-main-color !important;
+            background: $lighter-main-color !important;
         }
     }
     .navicon, .navicon::before, .navicon::after {
@@ -119,7 +121,7 @@ html
 .greedy-nav .visible-links {
     a {
         &::before {
-            background: $main-color;
+            background: $lighter-main-color;
         }
     }
 }
@@ -130,13 +132,9 @@ html
 
     // HOMEPAGE OVERALL STYLING
     #main {
-        // border-top: 5px solid $main-color;
         max-width: none;
         padding: 0;
 
-        @include breakpoint($medium) {
-            // padding-top: 50px;
-        }
     }
     main {
         position: relative;
@@ -144,10 +142,6 @@ html
     .hero-img {
         height: 100%;
         position: fixed;
-        
-        @include breakpoint($medium) {
-            // padding-top: 50px;
-        }
     }
     .initial-content {
         margin: 0 auto;
@@ -172,8 +166,6 @@ html
             top: 50%;
             margin: 3em;
             width: 33.33%;
-            // position: absolute;
-
         }
 
         h1 {
@@ -200,7 +192,6 @@ html
     .masthead {
         background: transparent;
         text-shadow: 0.5px 0.5px rgba(0, 0, 0, 0.3);
-        // transition: background $fade-in-length ease-out;
 
         .site-title-container {
             @include breakpoint($medium) {
@@ -208,11 +199,6 @@ html
             }
         }
 
-        &:hover {
-            // background: rgba(0, 0, 0, 0.5);
-            // transition: background $fade-in-length ease-in;
-        }
-        
         .greedy-nav {
             a {
                 color: #000000 !important;
@@ -261,9 +247,8 @@ html
     }
 }
 
-
-// ABOUT STYLING
-.layout--sarah-about {
+// CONTACT STYLING
+.layout--sarah-contact {
     .masthead {
         position: relative;
     }
@@ -272,96 +257,91 @@ html
         margin: 0 auto;
     }
     .about-image-container {
-        width: 50%;
-        float: left;
-        padding: 50px;
+        padding: 1em;
 
         @include breakpoint($medium) {
+            float: left;
+            width: 50%;
+        }
+        @include breakpoint($large) {
+            padding: 50px;
             padding-left: 0;
         }
     }
+    .about-image {
+        border-color: $lighter-main-color;
+        border-width: 30px;
+        border-style: dashed;
+    }
     .about-text {
-        width: 50%;
-        float: right;
-        padding: 50px;
         text-align: justify;
+        padding: 1em;
 
         h2 { 
             margin-top: 0;
         }
 
+        a {
+            color: $main-color;
+        }
+
         @include breakpoint($medium) {
+            float: right;
+            width: 50%;
+        }
+        @include breakpoint($large) {
+            padding: 50px;
             padding-right: 0;
         }
     }
 }
 
-
-// RESUME STYLING
-.layout--sarah-resume {
-    h2 {
-        margin: 0;
-    }
-
-    .initial-content {
-        @include breakpoint($medium) {
-            margin: 0 auto;
-            width: 65%;
-        }
-    }
-
-    .resume-iframe {
-        display: block;
-        width: 100%;
-        min-height: 400px;
-
-        @include breakpoint($medium) {
-            min-height: 700px;
-        }
-    }
-
-    .dl-link {
-        color: black;
-    }
-
-    div.resumes > div.resume:not(:last-child)
-    { 
-        padding-bottom: 2em;
+// PROJECTS STYLING
+.layout--sarah-projects {
+    a {
+        font-family: initial;
+        color: inherit;
     }
 }
 
-
-// MEDIA STYLING
-.layout--sarah-media {
-    #main {
-        @include breakpoint($medium) {
-            float: center;
-            width: calc(100% - 200px);
-            padding-right: 200px;
-        }
+// CV STYLING
+.layout--sarah-cv {
+    a {
+        font-family: initial;
+        color: inherit;
+    }
+    .collapsible {
+      background-color: $lighter-main-color;
+      color: black;
+      cursor: pointer;
+      padding: 1em;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      // font-size: 15px;
     }
 
-    .overall-figure {
-        columns: 2;
-        column-gap: 0;
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .collapsible:hover {
+      background-color: $main-color;
+      color: white;
     }
 
-    .crop {
-        margin: 0.25%;
-
-        img {
-            border-radius: 0;
-            margin: 0;
-        }
+    .content {
+      padding: 0 1em;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
     }
-}
 
-
-// CONTACT STYLING
-.layout--sarah-contact {
-    iframe {
-        width: 100%;
+    h3 {
+        // letter-spacing: 1.5px;
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
+
 }
 
 
@@ -381,41 +361,7 @@ html
     }
 }
 
-
-// STYLING FOR JS EFFECTS
-.fade-in-scroll {
-    // opacity: 0;
-}
-
-// UTIL STYLING
-.collapsible {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: #ccc;
-}
-
-/* Style the collapsible content. Note: hidden by default */
-// .content {
-//   padding: 0 18px;
-//   display: none;
-//   overflow: hidden;
-//   background-color: #f1f1f1;
-// }
-.content {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+// SEARCH STYLING
+.search-content {
+    padding-top: 3em;
 }

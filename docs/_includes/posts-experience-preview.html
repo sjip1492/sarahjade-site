@@ -1,0 +1,15 @@
+<div class="experience">
+	{% if include.post.company %}
+		<p class="experience-company">{{ include.post.company }}</p>
+	{% endif %}
+	
+	{% if include.post.dates %}
+		<p class="experience-company">{{ include.post.dates }}</p>
+	{% endif %}
+	
+	{% if include.post.description %}
+		<p class="experience-description">{{ include.post.description }}</p>
+	{% else %}
+		<p class="experience-description">{{ include.post.content }}</p>
+	{% endif %}
+</div>

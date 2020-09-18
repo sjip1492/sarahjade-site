@@ -1,6 +1,6 @@
 ---
-layout: tag
+layout: sarah-projects
 permalink: /projects/
-title: projects
+title: Projects
 taxonomy: project
 ---

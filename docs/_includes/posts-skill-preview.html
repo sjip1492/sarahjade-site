@@ -1,0 +1,10 @@
+<div class="skill">
+	{% if include.post.dates %}
+	<p class="skill-dates">{{ include.post.dates }}</p>
+	{% endif %}
+	{% if include.post.description %}
+	<p class="skill-description">{{ include.post.description }}</p>
+	{% else %}
+	<p class="skill-description">{{ include.post.content }}</p>
+	{% endif %}
+</div>
