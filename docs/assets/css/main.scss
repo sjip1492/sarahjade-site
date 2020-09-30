@@ -101,6 +101,9 @@ html
     .search__toggle {
         color: black;
     }
+    .greedy-nav .visible-links a::before {
+        background: $main-color;
+    }
 }
 
 #main {
@@ -274,7 +277,6 @@ html
         border-style: dashed;
     }
     .about-text {
-        text-align: justify;
         padding: 1em;
 
         h2 { 
@@ -298,6 +300,13 @@ html
 
 // PROJECTS STYLING
 .layout--sarah-projects {
+    .archive {
+        padding: 0 1.5em;
+
+        @include breakpoint($large) {
+            padding: 0;
+        }
+    }
     a {
         font-family: initial;
         color: inherit;
@@ -342,8 +351,34 @@ html
         margin-bottom: 10px;
     }
 
+    .skill-dates, .skill-subtitle {
+        font-style: italic;
+        font-size: 12px;
+    }
 }
 
+// POSTS STYLING
+.layout--posts {
+    #page-title {
+        font-size: 24px;
+    }
+    .post-videos {
+        padding: 25px;
+    }
+    .post-video {
+        width: 100%;
+    }
+    .post-image {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 25px;
+    }
+    .company, .location, .dates, .video-caption {
+        font-style: italic;
+        font-size: 12px;
+    }
+}
 
 // FOOTER STYLING
 #footer {
@@ -364,4 +399,11 @@ html
 // SEARCH STYLING
 .search-content {
     padding-top: 3em;
+    a {
+        font-family: initial;
+        color: inherit;
+    }
+    h2 {
+        padding: 0;
+    }
 }

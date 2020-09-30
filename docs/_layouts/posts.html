@@ -1,13 +1,63 @@
 ---
 layout: archive
 ---
-{{ content }}
-{% if page.experience %}
-    <p class="experience-location">{{ page.experience.location }}</p>
-    <p class="experience-dates">{{ page.experience.dates }}</p>
-    <p class="experience-description">{{ page.experience.description }}</p>
-    {{ content }}
+{% if page.company %}
+  <p class="company">{{ page.company }}</p>
 {% endif %}
+
+{% if page.location %}
+  <p class="location">{{ page.location }}</p>
+{% endif %}
+
+{% if page.dates %}
+  <p class="dates">{{ page.dates }}</p>
+{% endif %}
+
+{% if page.description %}
+  <p class="description">{{ page.description }}</p>
+{% endif %}
+
+{% if page.project_description %}
+  <p class="project-description">{{ page.project_description }}</p>
+{% endif %}
+
+{% if page.media %}
+  <div class="media">
+    {% for image in page.media.images %}
+      <div class="post-image">
+        <img src="{{ site.baseurl }}{{ image.url }}">
+        {% if image.description %}
+          <p class="video-caption">
+            {{ image.description }}
+          </p>
+        {% endif %}
+      </div>
+
+    {% endfor %}
+
+    {% for vid in page.media.videos %}
+      <div class="post-videos">
+        <video class="post-video" controls>
+          <source src="{{ site.baseurl }}{{ vid.url }}" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        {% if vid.description %}
+          <p class="video-caption">
+            {{ vid.description }}
+          </p>
+        {% endif %}
+      </div>
+
+    {% endfor %}
+
+  </div>
+{% endif %}
+
+{{ content }}
+
+
+<!-- tags: Javascript HTML/CSS Angular jQuery PHP SQL Docker experience -->
+
 <!-- 
 <ul class="taxonomy__index">
   {% assign postsInYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}

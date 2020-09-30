@@ -1,6 +1,6 @@
 ---
 layout: sarah-home
-fullpage_hero_image: "/assets/images/20200823_131949.jpg"
+fullpage_hero_image: "/assets/images/cover_50.jpg"
 title_image_header:
   button:
     - label: "Contact"

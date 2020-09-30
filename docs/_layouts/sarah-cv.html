@@ -10,19 +10,19 @@ layout: archive
 				{% if education.location %}<p>{{ education.location }}</p>{% endif %}
 				{% if education.date %}<p>{{ education.date }}</p>{% endif %}
 
+				{% if education.addl %}
+					<ul class="cv-sub-section">
+						{% for addl in education.addl %}  
+							<li>{{ addl }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+
 				{% if education.minors %}
 					<p class="cv-sub-title">Minor:</p>
 					<ul class="cv-sub-section">
 						{% for minor in education.minors %}  
 							<li>{{ minor }}</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-
-				{% if education.addl %}
-					<ul class="cv-sub-section">
-						{% for addl in education.addl %}  
-							<li>{{ addl }}</li>
 						{% endfor %}
 					</ul>
 				{% endif %}

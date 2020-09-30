@@ -1,10 +1,19 @@
 <div class="skill">
-	{% if include.post.dates %}
-	<p class="skill-dates">{{ include.post.dates }}</p>
+	{% if include.post.subtitle %}
+		<p class="skill-subtitle">{{ include.post.subtitle }}</p>
 	{% endif %}
-	{% if include.post.description %}
-	<p class="skill-description">{{ include.post.description }}</p>
+
+	{% if include.post.dates %}
+		<p class="skill-dates">{{ include.post.dates }}</p>
+	{% endif %}
+
+	{% if include.post.teaser %}
+		<p class="skill-description">{{ include.post.teaser }}</p>
+	{% else if include.post.description %}
+		<p class="skill-description">{{ include.post.description }}</p>
+	{% else if include.post.project_description %}
+		<p class="skill-description">{{ include.post.project_description }}</p>
 	{% else %}
-	<p class="skill-description">{{ include.post.content }}</p>
+		<p class="skill-description">{{ include.post.content }}</p>
 	{% endif %}
 </div>

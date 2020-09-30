@@ -1,7 +1,7 @@
 ---
 layout: sarah-contact
 permalink: /contact/
-image: "/assets/images/106023021_320500042280720_6922133975585030017_n.jpg"
+image: "/assets/images/about_35.jpg"
 header_text: Hello!!! World!!!
 ---
 I am a programmer and musician in the Vancouver area.
