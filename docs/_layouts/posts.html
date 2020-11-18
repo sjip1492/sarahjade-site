@@ -38,7 +38,7 @@ layout: archive
     {% for vid in page.media.videos %}
       <div class="post-videos">
         <video class="post-video" controls>
-          <source src="{{ site.baseurl }}{{ vid.url }}" type="video/mp4">
+          <source src="/{{ site.baseurl }}{{ vid.url }}" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
         {% if vid.description %}
