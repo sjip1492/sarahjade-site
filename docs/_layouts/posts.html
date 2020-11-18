@@ -25,7 +25,7 @@ layout: archive
   <div class="media">
     {% for image in page.media.images %}
       <div class="post-image">
-        <img src="{{ site.baseurl }}{{ image.url }}">
+        <img src="/{{ site.baseurl }}{{ image.url }}">
         {% if image.description %}
           <p class="video-caption">
             {{ image.description }}
