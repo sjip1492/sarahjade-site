@@ -5,6 +5,7 @@ skills:
   - C++
   - Python
   - Javascript
+  - Java
   - HTML/CSS
   - Node.js
   - C
