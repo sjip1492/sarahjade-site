@@ -1,20 +1,30 @@
 ---
 layout: sarah-cv
 permalink: /cv/
-skills:
+languages:
   - C++
   - Python
   - Javascript
   - Java
   - HTML/CSS
-  - Node.js
   - C
   - SQL
-  - Docker
   - C#
+concepts:
+  - Algorithms
+  - OOP
+  - Databases
+  - Microservices
+frameworks:
+  - Node.js
   - React
-  - ArcGIS
   - scikit-learn
+cloud:
+  - Docker
+  - Kubernetes
+software:
+  - ArcGIS
+
 education:
   - title: Bachelor of Arts in Computer Science
     location: University of British Columbia, Vancouver, Canada

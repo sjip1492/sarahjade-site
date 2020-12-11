@@ -49,17 +49,64 @@ layout: archive
 	</div>
 {% endif %}
 
-
-{% if page.skills %}
-	<h2 class="cv-title">Skills</h2>
-	{% for skill in page.skills %}
-		{% if site.tags[skill] %}
+{% if page.languages %}
+	<h2 class="cv-title">Programming Languages</h2>
+	{% for lang in page.languages %}
+		{% if site.tags[lang] %}
 			<div class="cv-section">
 				<button type="button" class="collapsible">
-					{{ skill }}
+					{{ lang }}
 				</button>
 				<div class="skill-posts content">
-					{% include posts-tag.html taxonomy=skill display_type='skill' type='grid' %}
+					{% include posts-tag.html taxonomy=lang display_type='skill' type='grid' %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% if page.concepts %}
+	<h2 class="cv-title">Concepts</h2>
+	{% for con in page.concepts %}
+		{% if site.tags[con] %}
+			<div class="cv-section">
+				<button type="button" class="collapsible">
+					{{ con }}
+				</button>
+				<div class="skill-posts content">
+					{% include posts-tag.html taxonomy=con display_type='skill' type='grid' %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% if page.frameworks %}
+	<h2 class="cv-title">Frameworks</h2>
+	{% for fram in page.frameworks %}
+		{% if site.tags[fram] %}
+			<div class="cv-section">
+				<button type="button" class="collapsible">
+					{{ fram }}
+				</button>
+				<div class="skill-posts content">
+					{% include posts-tag.html taxonomy=fram display_type='skill' type='grid' %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% if page.cloud %}
+	<h2 class="cv-title">Cloud-Based Technologies</h2>
+	{% for cloud in page.cloud %}
+		{% if site.tags[cloud] %}
+			<div class="cv-section">
+				<button type="button" class="collapsible">
+					{{ cloud }}
+				</button>
+				<div class="skill-posts content">
+					{% include posts-tag.html taxonomy=cloud display_type='skill' type='grid' %}
 				</div>
 			</div>
 		{% endif %}
