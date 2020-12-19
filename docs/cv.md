@@ -12,9 +12,12 @@ languages:
   - C#
 concepts:
   - Algorithms
-  - OOP
+  - Computer-Vision
   - Databases
+  - Graphics
+  - Machine-Learning
   - Microservices
+  - OOP
 frameworks:
   - Node.js
   - React
@@ -24,6 +27,7 @@ cloud:
   - Kubernetes
 software:
   - ArcGIS
+  - Unity
 
 education:
   - title: Bachelor of Arts in Computer Science
