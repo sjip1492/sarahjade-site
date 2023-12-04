@@ -144,15 +144,16 @@ html
     }
     .hero-img {
         height: 100%;
-        position: fixed;
+        width: 100%;
+        height: auto;
+        position: fixed; /* Fix the background image */
+        top: 0;
+        left: 0;
     }
     .initial-content {
         margin: 0 auto;
         max-width: 1280px;
     }
-    .section-background {
-    }
-
     .search-content {
         background: rgba(255, 255, 255, 0.75);
     }

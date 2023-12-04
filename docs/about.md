@@ -1,26 +1,20 @@
 ---
 layout: sarah-contact
 permalink: /contact/
-image: "/assets/images/about_35.jpg"
-header_text: Hello!!! World!!!
+image: "/assets/images/me.jpg"
+header_text: Sarah is...
 ---
-I am a programmer and musician in the Vancouver area.
+...a software developer in the Vancouver area.
 
-In my free time you can find me making music, taking online programming courses, annoying my 3 cats, and swimming/running/hiking.
+For more information on my interests, experience, and projects please see the pages listed in the navigation bar.
 
-Please contact me for references, transcripts, inquiries, etc.
+Relevant links to other stuff:
 
-
-email: [Here](mailto:sarahjadepratt@gmail.com)
-
-
-instagram: [@lowerbackhurts](https://instagram.com/lowerbackhurts)
-
+vegan eats blog: [@wholefoodshotfoodsection](https://instagram.com/wholefoodshotfoodsection)
 
 soundcloud: [@leisurenoise](https://soundcloud.com/leisurenoise)
 
-
 github: [@sjip1492](https://github.com/sjip1492/)
 
-
 :)
+

@@ -1,10 +1,10 @@
 main:
-  # - title: "ABOUT"
-    # url: /about/
-  - title: "CONTACT"
+  - title: "LINKS"
     url: /contact/
-  - title: "CV"
-    url: /cv/
-  - title: "PROJECTS"
-    url: /projects/
+  - title: "INTERESTS"
+    url: /interests/
+  - title: "EXPERIENCE"
+    url: /experience/
+  - title: "CREATIONS"
+    url: /creations/
   

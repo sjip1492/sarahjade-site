@@ -1,0 +1,69 @@
+---
+layout: archive
+---
+{% if page.education %}
+	<h2 class="cv-title">Education</h2>
+	<ul class="cv-section">
+		{% for education in page.education %} 
+			<li>
+				<h3>{{ education.title }}</h3>
+				{% if education.location %}<p>{{ education.location }}</p>{% endif %}
+				{% if education.date %}<p>{{ education.date }}</p>{% endif %}
+
+				{% if education.addl %}
+					<ul class="cv-sub-section">
+						{% for addl in education.addl %}  
+							<li>{{ addl }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+
+				{% if education.minors %}
+					<p class="cv-sub-title">Minor:</p>
+					<ul class="cv-sub-section">
+						{% for minor in education.minors %}  
+							<li>{{ minor }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+
+				{% if education.awards %}
+					<p class="cv-sub-title">Awards:</p>
+					<ul class="cv-sub-section">
+						{% for award in education.awards %}  
+							<li>{{ award }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+
+{% if site.tags['experience'] %}
+	<h2 class="cv-title">Experience [THIS PAGE IS UNDER CONSTRUCTION 12/03/2023]
+	</h2>
+	<div class="cv-section">
+		<ul>
+			{% include posts-tag.html taxonomy='experience' display_type='experience' type='list' %}
+		</ul>
+	</div>
+{% endif %}
+
+{% if page.concepts %}
+	<h2 class="cv-title">Relevant Coursework</h2>
+	{% for con in page.concepts %}
+		{% if site.tags[con] %}
+			<div class="cv-section">
+				<button type="button" class="collapsible">
+					{{ con }}
+				</button>
+				<div class="skill-posts content">
+					{% include posts-tag.html taxonomy=con display_type='relevant' type='grid' %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+<script type="text/javascript" src="/assets/js/expander.js"></script>
