@@ -41,7 +41,7 @@ layout: archive
 {% endif %}
 
 {% if site.tags['experience'] %}
-	<h2 class="cv-title">Experience [THIS PAGE IS UNDER CONSTRUCTION 12/03/2023]
+	<h2 class="cv-title">Experience
 	</h2>
 	<div class="cv-section">
 		<ul>
@@ -51,13 +51,10 @@ layout: archive
 {% endif %}
 
 {% if page.concepts %}
-	<h2 class="cv-title">Relevant Coursework</h2>
+	<h2 class="cv-title">Selected Coursework</h2>
 	{% for con in page.concepts %}
 		{% if site.tags[con] %}
 			<div class="cv-section">
-				<button type="button" class="collapsible">
-					{{ con }}
-				</button>
 				<div class="skill-posts content">
 					{% include posts-tag.html taxonomy=con display_type='relevant' type='grid' %}
 				</div>
