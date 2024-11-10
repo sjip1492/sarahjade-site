@@ -1,0 +1,45 @@
+---
+layout: default
+title: Home
+---
+<div class="text-center mb-4">
+  <h1 onclick="loadHeadshot()" style="cursor: pointer; color: #007bff;">{{ site.title }}</h1>
+    <!-- Social media links section -->
+    <div class="social-links">
+      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-icon linkedin" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="social-icon twitter" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" class="social-icon github" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://soundcloud.com/{{ site.soundcloud_username }}" target="_blank" class="social-icon soundcloud" aria-label="SoundCloud">
+        <i class="fab fa-soundcloud"></i>
+      </a>
+    </div>
+</div>
+<!-- Flexbox container for equal height columns -->
+<div class="row d-flex align-items-stretch">
+
+<!-- Left Sidebar with Links -->
+<div class="col-md-3 d-flex flex-column align-items-center bg-light p-3 border rounded">
+  <button class="btn nav-button-container-2 nav-button-container mb-2 w-100" onclick="loadContent('bio')">Bio</button>
+  <button class="btn nav-button-container-2 nav-button-container mb-2 w-100" onclick="loadContent('news')">News</button>
+</div>
+
+<!-- Main Content Section (sets the height for sidebars to match) -->
+<div class="col-md-6 d-flex flex-column">
+  <div id="content" class="main-content p-4 bg-white rounded shadow flex-grow-1">
+    <!-- Placeholder content -->
+    <img src="{{ '/assets/images/headshot.jpg' | relative_url }}" alt="Me" class="img-fluid rounded">
+  </div>
+</div>
+
+<!-- Right Sidebar with Links -->
+<div class="col-md-3 d-flex flex-column align-items-center bg-light p-3 border rounded">
+  <button class="nav-button-container-2 nav-button-container btn mb-2 w-100" onclick="loadContent('cv')">CV</button>
+  <button class="btn nav-button-container-2 nav-button-container mb-2 w-100" onclick="loadContent('work')">Work/Writing</button>
+</div>
+</div>

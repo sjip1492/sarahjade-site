@@ -1,0 +1,129 @@
+/* Style for the button container */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute buttons evenly */
+  height: 100%; /* Make the button container fill the height of the sidebar */
+}
+
+/* Make each button take equal space */
+.sidebar-buttons .btn {
+  flex-grow: 1; /* Distribute space proportionally between buttons */
+  margin-bottom: 10px; /* Space between buttons */
+  padding: 20px; /* Add padding to the button for a better look */
+  font-size: 18px; /* Adjust button font size */
+}
+
+/* Adjust button margin on the last one to remove extra space */
+.sidebar-buttons .btn:last-child {
+  margin-bottom: 0;
+}
+
+/* Optional: Additional styling for the sidebar */
+.bg-light {
+  background-color: #232925 !important; /* Optional light background color */
+}
+
+.border {
+  border: 1px solid #ddd; /* Optional border for visual separation */
+}
+
+.rounded {
+  border-radius: 8px; /* Optional rounded corners for better visual appeal */
+}
+
+.nav-button-container-2 {
+  height: 100%;
+}
+
+.nav-button-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.nav-button-container {
+  position: relative; /* Needed for positioning pseudo-elements */
+  padding: 1rem;
+  color: white;
+}
+.btn:hover, .btn:visited {
+  color: white !important;
+}
+.btn-primary {
+  background-color: none !important;
+}
+
+.nav-button-container:hover::before {
+  top: -2px; /* Move slightly above the container */
+  left: 0; /* Align to the left edge */
+  width: 100%; /* Expand to cover the full width */
+  height: calc(100% + 4px); /* Expand to cover full height plus padding */
+  border: 2px solid white; /* Convert to an outline */
+  background-color: transparent; /* Remove solid fill */
+  transform: translateX(0); /* Remove centering translation */
+  border-radius: 8px; /* Remove solid color */
+  color: white !important;
+}
+
+h1, body {
+  color: white !important;
+}
+h1:hover {
+  color:#687a6e !important;
+}
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.main-content {
+  color: #232925;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+a {
+  color:#687a6e;
+  text-decoration: underline;
+  &:hover {
+    color: #8da695;
+  }
+}
+
+
+/* Social media links section */
+.social-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff; /* Changes color on hover */
+}
+
+/* Optional: Customize colors for each social media platform */
+.social-icon.twitter::hover { color: #1DA1F2; }
+.social-icon.github:hover { color: #333; }
+.social-icon.linkedin:hover { color: #0077b5; }
+.social-icon.soundcloud:hover { color: #ff5500; }
+
+.social-links i {
+  margin-right: 5px; /* Space between icon and text */
+}
