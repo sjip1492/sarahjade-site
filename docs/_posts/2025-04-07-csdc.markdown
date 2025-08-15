@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CS Diversity"
+title: "CS Diversity Awards"
 date:  2025-04-07
 tag: news
 ---
