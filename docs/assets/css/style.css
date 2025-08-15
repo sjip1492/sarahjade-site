@@ -21,7 +21,7 @@
 
 /* Optional: Additional styling for the sidebar */
 .bg-light {
-  background-color: #232925 !important; /* Optional light background color */
+  background-color: hwb(207 96% 0%) !important; /* Optional light background color */
 }
 
 .border {
