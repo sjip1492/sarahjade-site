@@ -51,10 +51,10 @@
 .nav-button-container {
   position: relative; /* Needed for positioning pseudo-elements */
   padding: 1rem;
-  color: white;
+  /* color: white; */
 }
 .btn:hover, .btn:visited {
-  color: white !important;
+  /* color: white !important; */
 }
 .btn-primary {
   background-color: none !important;
@@ -69,11 +69,11 @@
   background-color: transparent; /* Remove solid fill */
   transform: translateX(0); /* Remove centering translation */
   border-radius: 8px; /* Remove solid color */
-  color: white !important;
+  /* color: white !important; */
 }
 
 h1, body {
-  color: white !important;
+  /* color: white !important; */
 }
 h1:hover {
   color:#687a6e !important;
