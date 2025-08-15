@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Submission Accepted to UIST SIC"
-date:  2025-03-08
+date:  2025-08-08
 tag: news
 ---
 Accepted to participate in the UIST 2025 Student Innovation Contest hosted by DataFeel Technologies, hosted in Busan, Korea September 28-October 1.
