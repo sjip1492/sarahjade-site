@@ -1,7 +1,7 @@
 (() => {
   const DURATION_MS = 10_000;
   const RADIUS_PX = 50;
-  const HARDNESS = 0.35;
+  const HARDNESS = 0.75;
 
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
   
