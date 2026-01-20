@@ -44,31 +44,67 @@ a:hover {
 /* ===========================
    BLUR & BACKGROUND EFFECTS
    =========================== */
-.unblur,
+
+/* Make the button a stacking context */
 .blur {
-  /* backdrop-filter: blur(20px); */
-  transition: backdrop-filter 0.4s ease-in-out;
+  position: relative;
+  overflow: hidden;          /* keep blur inside rounded corners */
+  filter: none;              /* IMPORTANT: remove blur from the button itself */
 }
 
-.unblur {
-  backdrop-filter: blur(0px);
-}
-.unblur:hover {
-  backdrop-filter: blur(20px);
-  transition: backdrop-filter 0.4s ease-in-out;
+/* background-only blur layer */
+.blur::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Put whatever background you want here */
+  /* background: rgba(255, 255, 255, 0.08); */
+
+  /* Blur only this layer */
+  filter: blur(14px);
+  transform: scale(1.2);     /* prevents blur edges from clipping */
 }
 
+/* Ensure text/border sit above the blurred background layer */
+.blur,
+.blur * {
+  position: relative;
+  z-index: 1;
+}
 .blur {
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(20px);
-  transition: backdrop-filter 0.4s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px; /* matches your .rounded feel */
 }
 
-.blur:hover {
-  background-color: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(0px);
-  transition: backdrop-filter 0.4s ease-in-out;
+/* Background layer that gets blurred */
+.blur .blur-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(14px);
+  transform: scale(1.2);  /* avoid clipped blur edges */
 }
+
+/* Foreground content stays crisp */
+.blur .blur-fg {
+  position: relative;
+  z-index: 2;
+}
+
+/* Canvas overlay (mask) sits above bg but below text if you want */
+.blur .blur-reveal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 
 /* ===========================
    BUTTONS & NAVIGATION
@@ -106,7 +142,7 @@ a:hover {
   padding: 1rem;
 }
 
-.nav-button-container::before {
+/* .nav-button-container::before {
   content: "";
   position: absolute;
   top: 0;
@@ -115,9 +151,9 @@ a:hover {
   height: 2px;
   transition: all 0.4s ease-in-out;
   transform: translateX(-50%);
-}
+} */
 
-.nav-button-container:hover::before {
+/* .nav-button-container:hover::before {
   top: -2px;
   left: 0;
   width: 100%;
@@ -126,7 +162,7 @@ a:hover {
   background-color: transparent;
   transform: translateX(0);
   border-radius: 8px;
-}
+} */
 
 .nav-button-container-2 {
   height: 100%;
@@ -146,7 +182,7 @@ a:hover {
   margin-bottom: 15px;
 }
 .main-content{
-  z-index: -2;
+  z-index: 3;
 }
 
 /* ===========================
@@ -203,17 +239,3 @@ a:hover {
 /* ===========================
    ANIMATIONS
    =========================== */
-@keyframes bounceIn {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.bounce-in {
-  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
