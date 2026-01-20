@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
   </head>
-  <body class="bounce-in">
-    <div class="container py-5">
+  <body class="">
+    <div class="bounce-in container py-5">
       {{ content }}
     </div>
+  <img src="{{ '/assets/images/favicon/web-app-manifest-512x512.png' | relative_url }}" alt="anthurium" class="signature-icon">
+
 
     <!-- Link to the custom JavaScript file -->
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>

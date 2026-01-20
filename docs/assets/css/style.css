@@ -34,7 +34,13 @@ a:hover {
 .main-content {
   color: #232925;
 }
-
+.signature-icon {
+  display: inline;
+  max-height: 40px;
+  position:absolute;
+  left: 50%;
+  bottom:0;
+}
 /* ===========================
    BLUR & BACKGROUND EFFECTS
    =========================== */
