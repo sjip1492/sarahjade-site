@@ -35,11 +35,11 @@ a:hover {
   color: #232925;
 }
 .signature-icon {
-  display: inline;
-  max-height: 40px;
-  position:absolute;
-  left: 50%;
+  /* display: inline; */
+  max-height: 130px;
+  position:sticky;
   bottom:0;
+  z-index: -1;
 }
 /* ===========================
    BLUR & BACKGROUND EFFECTS
@@ -144,6 +144,9 @@ a:hover {
   font-weight: 200;
   text-align: center;
   margin-bottom: 15px;
+}
+.main-content{
+  z-index: -2;
 }
 
 /* ===========================
