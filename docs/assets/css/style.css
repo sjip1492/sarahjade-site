@@ -36,7 +36,7 @@ a:hover {
 }
 .signature-icon {
   /* display: inline; */
-  max-height: 130px;
+  max-height: 200px;
   position:sticky;
   bottom:0;
   z-index: -1;
