@@ -1,6 +1,6 @@
 function loadContent(section) {
   // Check if this is a local HTML section (partial) or a full page
-  if (['bio', 'news', 'cv', 'work'].includes(section)) {
+  if (['bio', 'news', 'cv', 'work', 'headshot'].includes(section)) {
     fetch(`/partials/${section}.html`)
       .then(response => {
         if (!response.ok) throw new Error('Content not found');
@@ -18,8 +18,8 @@ function loadContent(section) {
     window.location.href = section;
   }
 }
-  function loadHeadshot() {
-    document.getElementById('content').innerHTML = `
-      <img src="/assets/images/headshot.jpg" alt="Your Photo" class="img-fluid rounded">
-    `;
-  }
+  // function loadHeadshot() {
+  //   document.getElementById('content').innerHTML = `
+  //     <img src="/assets/images/me2.png" alt="My Photo" class="img-fluid rounded">
+  //   `;
+  // }

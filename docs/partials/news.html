@@ -1,7 +1,7 @@
 ---
 ---
-<div class="blog-container">
-  <h2>News</h2>
+<div class="blog-container rounded blur unblur-hover">
+  <h2 class="content-header">News</h2>
   {% assign news = site.posts | where:"tags","news"  %}
   {% for post in news %}
     <div class="blog-preview">

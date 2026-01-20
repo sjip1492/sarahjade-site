@@ -1,39 +1,103 @@
-/* Style for the button container */
+/* ===========================
+   GLOBAL STYLES
+   =========================== */
+body {
+  font-weight: 100;
+  background-image: url('/assets/images/DSCN0943.JPG');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Acid Grotesk', sans-serif;
+}
+
+h1:hover {
+  color: #687a6e !important;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+a {
+  color: white;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #8da695;
+}
+
+.main-content {
+  color: #232925;
+}
+
+/* ===========================
+   BLUR & BACKGROUND EFFECTS
+   =========================== */
+.unblur,
+.blur {
+  /* backdrop-filter: blur(20px); */
+  transition: backdrop-filter 0.4s ease-in-out;
+}
+
+.unblur {
+  backdrop-filter: blur(0px);
+}
+.unblur:hover {
+  backdrop-filter: blur(20px);
+  transition: backdrop-filter 0.4s ease-in-out;
+}
+
+.blur {
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(20px);
+  transition: backdrop-filter 0.4s ease-in-out;
+}
+
+.blur:hover {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.4s ease-in-out;
+}
+
+/* ===========================
+   BUTTONS & NAVIGATION
+   =========================== */
 .sidebar-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute buttons evenly */
-  height: 100%; /* Make the button container fill the height of the sidebar */
+  justify-content: space-between;
+  height: 100%;
 }
 
-/* Make each button take equal space */
 .sidebar-buttons .btn {
-  flex-grow: 1; /* Distribute space proportionally between buttons */
-  margin-bottom: 10px; /* Space between buttons */
-  padding: 20px; /* Add padding to the button for a better look */
-  font-size: 18px; /* Adjust button font size */
+  flex-grow: 1;
+  margin-bottom: 10px;
+  padding: 20px;
+  font-size: 10em;
+  transition: all 0.4s ease-in-out;
 }
 
-/* Adjust button margin on the last one to remove extra space */
 .sidebar-buttons .btn:last-child {
   margin-bottom: 0;
 }
 
-/* Optional: Additional styling for the sidebar */
-.bg-light {
-  background-color: hwb(207 96% 0%) !important; /* Optional light background color */
+.btn:hover,
+.btn:visited {
+  transition: all 0.4s ease-in-out;
 }
 
-.border {
-  border: 1px solid #ddd; /* Optional border for visual separation */
+.btn-primary {
+  background-color: none !important;
 }
 
-.rounded {
-  border-radius: 8px; /* Optional rounded corners for better visual appeal */
-}
-
-.nav-button-container-2 {
-  height: 100%;
+.nav-button-container {
+  position: relative;
+  padding: 1rem;
 }
 
 .nav-button-container::before {
@@ -43,64 +107,53 @@
   left: 50%;
   width: 40px;
   height: 2px;
-  background-color: white;
   transition: all 0.4s ease-in-out;
   transform: translateX(-50%);
 }
 
-.nav-button-container {
-  position: relative; /* Needed for positioning pseudo-elements */
-  padding: 1rem;
-  /* color: white; */
-}
-.btn:hover, .btn:visited {
-  /* color: white !important; */
-}
-.btn-primary {
-  background-color: none !important;
-}
-
 .nav-button-container:hover::before {
-  top: -2px; /* Move slightly above the container */
-  left: 0; /* Align to the left edge */
-  width: 100%; /* Expand to cover the full width */
-  height: calc(100% + 4px); /* Expand to cover full height plus padding */
-  border: 2px solid white; /* Convert to an outline */
-  background-color: transparent; /* Remove solid fill */
-  transform: translateX(0); /* Remove centering translation */
-  border-radius: 8px; /* Remove solid color */
-  /* color: white !important; */
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 4px);
+  border: 1px solid white;
+  background-color: transparent;
+  transform: translateX(0);
+  border-radius: 8px;
 }
 
-h1, body {
-  /* color: white !important; */
-}
-h1:hover {
-  color:#687a6e !important;
-}
-body {
-  font-family: 'Courier New', Courier, monospace;
+.nav-button-container-2 {
+  height: 100%;
 }
 
-.main-content {
-  color: #232925;
-}
 
-h2 {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-a {
-  color:#687a6e;
-  text-decoration: underline;
-  &:hover {
-    color: #8da695;
+/* ===========================
+   CONTENT CLASSES
+   =========================== */
+  #id {
+    padding: 0 15px;
   }
+.content-header {
+  font-size: 2rem;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+.border {
+  border: 1px solid #ddd;
+}
 
-/* Social media links section */
+.rounded {
+  border-radius: 8px;
+}
+
+/* ===========================
+   SOCIAL MEDIA LINKS
+   =========================== */
 .social-links {
   margin-top: 10px;
   display: flex;
@@ -115,15 +168,43 @@ a {
 }
 
 .social-links a:hover {
-  color: #007bff; /* Changes color on hover */
+  color: white;
 }
 
-/* Optional: Customize colors for each social media platform */
-.social-icon.twitter::hover { color: #1DA1F2; }
-.social-icon.github:hover { color: #333; }
-.social-icon.linkedin:hover { color: #0077b5; }
-.social-icon.soundcloud:hover { color: #ff5500; }
+.social-icon.twitter:hover {
+  color: #1DA1F2;
+}
+
+.social-icon.github:hover {
+  color: #333;
+}
+
+.social-icon.linkedin:hover {
+  color: #0077b5;
+}
+
+.social-icon.soundcloud:hover {
+  color: #ff5500;
+}
 
 .social-links i {
-  margin-right: 5px; /* Space between icon and text */
+  margin-right: 5px;
+}
+
+/* ===========================
+   ANIMATIONS
+   =========================== */
+@keyframes bounceIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
