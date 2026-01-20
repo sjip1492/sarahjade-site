@@ -76,7 +76,7 @@ a:hover {
 .blur {
   position: relative;
   overflow: hidden;
-  border-radius: 8px; /* matches your .rounded feel */
+  border-radius: 15px; /* matches your .rounded feel */
 }
 
 /* Background layer that gets blurred */
@@ -193,7 +193,7 @@ a:hover {
 }
 
 .rounded {
-  border-radius: 8px;
+  border-radius: 15px;
 }
 
 /* ===========================

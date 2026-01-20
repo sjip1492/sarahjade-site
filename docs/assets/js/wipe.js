@@ -2,7 +2,8 @@
   const DURATION_MS = 10_000;
   const RADIUS_PX = 50;
   const HARDNESS = 0.75;
-
+  const STEP_PX = 6;
+  const MAX_STAMPS = 2000;
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
   
   function initBlurWipe() {
@@ -31,7 +32,10 @@
 
       this.pointerInside = false;
       root.addEventListener("pointerenter", () => this.pointerInside = true);
-      root.addEventListener("pointerleave", () => this.pointerInside = false);
+      root.addEventListener("pointerleave", () => {
+        this.pointerInside = false;
+        this.lastPt = null;
+      });
       root.addEventListener("pointermove", (e) => this.onMove(e));
 
       this.ro = new ResizeObserver(() => this.needsResize = true);
@@ -39,6 +43,7 @@
 
       this.lastMaskUpdate = 0;
       this.raf = requestAnimationFrame((t) => this.frame(t));
+      this.lastPt = null;
     }
 
     resizeIfNeeded() {
@@ -60,8 +65,44 @@
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      this.stamps.push({ x, y, t: performance.now() });
-      if (this.stamps.length > 1500) this.stamps.splice(0, this.stamps.length - 1500);
+        const now = performance.now();
+
+        if (!this.lastPt) {
+        this.stamps.push({ x, y, t: now });
+        this.lastPt = { x, y };
+        return;
+        }
+
+        const x0 = this.lastPt.x;
+        const y0 = this.lastPt.y;
+
+        const dx = x - x0;
+        const dy = y - y0;
+        const dist = Math.hypot(dx, dy);
+
+        // If the mouse barely moved, just stamp once
+        if (dist < 0.001) {
+        this.stamps.push({ x, y, t: now });
+        return;
+        }
+
+        // Stamp along the segment every STEP_PX pixels
+        const steps = Math.ceil(dist / STEP_PX);
+        for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        this.stamps.push({
+            x: x0 + dx * t,
+            y: y0 + dy * t,
+            t: now
+        });
+        }
+
+        this.lastPt = { x, y };
+
+        // cap
+        if (this.stamps.length > MAX_STAMPS) {
+        this.stamps.splice(0, this.stamps.length - MAX_STAMPS);
+        }
     }
 
     drawMask(now) {
