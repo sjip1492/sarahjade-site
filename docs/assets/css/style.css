@@ -96,7 +96,6 @@ a:hover {
   bottom: 0;
   max-height: 160px;      /* tune */
   z-index: 0;            /* above background */
-  pointer-events: none;   /* so it doesn't block clicks */
   opacity: 0.9;           /* optional */
 }
 
@@ -199,7 +198,10 @@ a:hover {
   text-align: center;
   margin-bottom: 15px;
 }
-
+#content{
+  position: relative;
+  overflow: hidden;
+}
 /* ==========================================================================
    UTILITY CLASSES
    ========================================================================== */
@@ -254,5 +256,5 @@ a:hover {
 }
 
 /* ==========================================================================
-   RESPONSIVE STYLES
+   ANIMATION STYLES
    ========================================================================== */
