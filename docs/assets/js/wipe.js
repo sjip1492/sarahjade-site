@@ -10,6 +10,14 @@
     document.querySelectorAll(".blur").forEach(el => new BlurWipe(el));
   }
 
+  window.initBlurWipe = function initBlurWipe(root = document) {
+    root.querySelectorAll(".blur").forEach(el => {
+        if (el.dataset.wipeInit === "1") return; // don’t double-init
+        el.dataset.wipeInit = "1";
+        new BlurWipe(el); // whatever your class/constructor is called
+    });
+    };
+
   // Best: wait until CSS/images/fonts/layout are settled
   window.addEventListener("load", () => {
     initBlurWipe();
@@ -114,7 +122,7 @@
       // We want the BLUR BG visible everywhere except the wiped path.
       // So we start opaque, then punch transparent holes.
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "rgba(220,220,220,0.19)";
+      ctx.fillStyle = "rgba(230,230,230,0.6)";
       ctx.fillRect(0, 0, w, h);
 
       ctx.globalCompositeOperation = "destination-out";

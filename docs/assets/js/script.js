@@ -7,7 +7,11 @@ function loadContent(section) {
         return response.text();
       })
       .then(html => {
-        document.getElementById('content').innerHTML = html;
+        const content = document.getElementById('content');
+        content.innerHTML = html;
+
+        // re-init wipe on newly injected content
+        if (window.initBlurWipe) window.initBlurWipe(content);
       })
       .catch(error => {
         console.error(error);

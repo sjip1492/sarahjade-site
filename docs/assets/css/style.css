@@ -1,20 +1,67 @@
-/* ===========================
-   GLOBAL STYLES
-   =========================== */
-body {
-  font-weight: 100;
-  background-image: url('/assets/images/DSCN0943.JPG');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+/* ==========================================================================
+   THEME VARIABLES
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-weight-body: 250;
+
+  /* Colors */
+  --color-text-main: #232925;
+  --color-link: #ffffff;
+  --color-link-hover: #black;
+  --color-h1-hover: rgb(2, 1, 1);
+
+  /* Surfaces */
+  --surface-frost: rgba(255, 255, 255, 0.08);
+
+  /* Blur */
+  --blur-radius: 8px;
+  --blur-scale: 1.2;
+
+  /* Radii */
+  --radius: 15px;
+
+  /* Motion */
+  --transition-fast: 0.3s ease;
+  --transition-med: 0.4s ease-in-out;
+
+  /* Background image */
+  --page-bg-image: url("/assets/images/DSCN0943.JPG");
+  --page-bg-size: cover;
+  --page-bg-position: center;
+  --page-bg-attachment: fixed;
+
+  /* Social brand colors */
+  --twitter: #1da1f2;
+  --github: #333333;
+  --linkedin: #0077b5;
+  --soundcloud: #ff5500;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Acid Grotesk', sans-serif;
+/* ==========================================================================
+   GLOBAL STYLES
+   ========================================================================== */
+
+body {
+  font-weight: var(--font-weight-body);
+  background-image: var(--page-bg-image);
+  background-size: var(--page-bg-size);
+  background-position: var(--page-bg-position);
+  background-attachment: var(--page-bg-attachment);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
 }
 
 h1:hover {
-  color: #687a6e !important;
+  color: var(--color-h1-hover) !important;
 }
 
 h2 {
@@ -22,80 +69,74 @@ h2 {
 }
 
 a {
-  color: white;
+  color: var(--color-link);
   text-decoration: underline;
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: #8da695;
+  color: var(--color-link-hover);
 }
 
 .main-content {
-  color: #232925;
+  color: var(--color-text-main);
+  z-index: 3;
 }
-.signature-icon {
-  /* display: inline; */
+
+/* Signature image */
+/* .signature-icon {
   max-height: 200px;
-  position:sticky;
-  bottom:0;
+  position: sticky;
+  bottom: 0;
   z-index: -1;
-}
-/* ===========================
-   BLUR & BACKGROUND EFFECTS
-   =========================== */
-
-/* Make the button a stacking context */
-.blur {
-  position: relative;
-  overflow: hidden;          /* keep blur inside rounded corners */
-  filter: none;              /* IMPORTANT: remove blur from the button itself */
-}
-
-/* background-only blur layer */
-.blur::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  /* Put whatever background you want here */
-  /* background: rgba(255, 255, 255, 0.08); */
-
-  /* Blur only this layer */
-  filter: blur(14px);
-  transform: scale(1.2);     /* prevents blur edges from clipping */
+} */
+.signature-icon {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  max-height: 160px;      /* tune */
+  z-index: 0;            /* above background */
+  pointer-events: none;   /* so it doesn't block clicks */
+  opacity: 0.9;           /* optional */
 }
 
-/* Ensure text/border sit above the blurred background layer */
-.blur,
-.blur * {
-  position: relative;
-  z-index: 1;
-}
+
+/* ==========================================================================
+   BLUR + WIPE EFFECT (BACKGROUND ONLY)
+   - Structure expected:
+     <div class="blur">
+       <span class="blur-bg"></span>
+       <div class="blur-fg">...</div>
+       (wipe.js injects <canvas class="blur-reveal-canvas">)
+     </div>
+   ========================================================================== */
+
 .blur {
   position: relative;
   overflow: hidden;
-  border-radius: 15px; /* matches your .rounded feel */
+  border-radius: var(--radius);
+  /* IMPORTANT: blur must not be applied to the container itself */
+  filter: none;
 }
 
-/* Background layer that gets blurred */
+/* Background layer that gets blurred and masked */
 .blur .blur-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(255, 255, 255, 0.08);
-  filter: blur(14px);
-  transform: scale(1.2);  /* avoid clipped blur edges */
+
+  background: var(--surface-frost);
+  filter: blur(var(--blur-radius));
+  transform: scale(var(--blur-scale)); 
 }
 
-/* Foreground content stays crisp */
+/* Foreground stays crisp */
 .blur .blur-fg {
   position: relative;
   z-index: 2;
 }
 
-/* Canvas overlay (mask) sits above bg but below text if you want */
+/* Canvas overlay used to generate the mask image in JS */
 .blur .blur-reveal-canvas {
   position: absolute;
   inset: 0;
@@ -105,10 +146,10 @@ a:hover {
   z-index: 1;
 }
 
-
-/* ===========================
+/* ==========================================================================
    BUTTONS & NAVIGATION
-   =========================== */
+   ========================================================================== */
+
 .sidebar-buttons {
   display: flex;
   flex-direction: column;
@@ -121,7 +162,7 @@ a:hover {
   margin-bottom: 10px;
   padding: 20px;
   font-size: 10em;
-  transition: all 0.4s ease-in-out;
+  transition: all var(--transition-med);
 }
 
 .sidebar-buttons .btn:last-child {
@@ -130,75 +171,51 @@ a:hover {
 
 .btn:hover,
 .btn:visited {
-  transition: all 0.4s ease-in-out;
-}
-
-.btn-primary {
-  background-color: none !important;
+  transition: all var(--transition-med);
 }
 
 .nav-button-container {
   position: relative;
   padding: 1rem;
+  z-index:0;
 }
-
-/* .nav-button-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 40px;
-  height: 2px;
-  transition: all 0.4s ease-in-out;
-  transform: translateX(-50%);
-} */
-
-/* .nav-button-container:hover::before {
-  top: -2px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 4px);
-  border: 1px solid white;
-  background-color: transparent;
-  transform: translateX(0);
-  border-radius: 8px;
-} */
 
 .nav-button-container-2 {
   height: 100%;
 }
 
-
-/* ===========================
+/* ==========================================================================
    CONTENT CLASSES
-   =========================== */
-  #id {
-    padding: 0 15px;
-  }
+   ========================================================================== */
+
+/* This selector targets an element with id="id". If unintended, rename it. */
+#id {
+  padding: 0 15px;
+}
+
 .content-header {
   font-size: 2rem;
   font-weight: 200;
   text-align: center;
   margin-bottom: 15px;
 }
-.main-content{
-  z-index: 3;
-}
 
-/* ===========================
+/* ==========================================================================
    UTILITY CLASSES
-   =========================== */
+   ========================================================================== */
+
 .border {
   border: 1px solid #ddd;
 }
 
 .rounded {
-  border-radius: 15px;
+  border-radius: var(--radius) !important;
 }
 
-/* ===========================
+/* ==========================================================================
    SOCIAL MEDIA LINKS
-   =========================== */
+   ========================================================================== */
+
 .social-links {
   margin-top: 10px;
   display: flex;
@@ -209,33 +226,33 @@ a:hover {
 .social-links a {
   text-decoration: none;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 .social-links a:hover {
-  color: white;
+  color: var(--color-link);
 }
 
 .social-icon.twitter:hover {
-  color: #1DA1F2;
+  color: var(--twitter);
 }
 
 .social-icon.github:hover {
-  color: #333;
+  color: var(--github);
 }
 
 .social-icon.linkedin:hover {
-  color: #0077b5;
+  color: var(--linkedin);
 }
 
 .social-icon.soundcloud:hover {
-  color: #ff5500;
+  color: var(--soundcloud);
 }
 
 .social-links i {
   margin-right: 5px;
 }
 
-/* ===========================
-   ANIMATIONS
-   =========================== */
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
