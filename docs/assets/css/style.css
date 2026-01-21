@@ -83,20 +83,11 @@ a:hover {
   z-index: 3;
 }
 
-/* Signature image */
-/* .signature-icon {
-  max-height: 200px;
-  position: sticky;
-  bottom: 0;
-  z-index: -1;
-} */
 .signature-icon {
   position: fixed;
-  right: 0;
   bottom: 0;
   max-height: 160px;      /* tune */
   z-index: 0;            /* above background */
-  opacity: 0.9;           /* optional */
 }
 
 
