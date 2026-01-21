@@ -1,7 +1,7 @@
 function loadContent(section) {
   // Check if this is a local HTML section (partial) or a full page
   if (['bio', 'news', 'cv', 'portfolio', 'work_index', 'news_index'].includes(section)) {
-    fetch(`/partials/${section}.html`)
+    fetch(`/${section}`)
       .then(response => {
         if (!response.ok) throw new Error('Content not found');
         return response.text();
@@ -46,15 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const url = new URL(originalSrc, window.location.href);
 
   // Example: if original is /myrepo/assets/images/favicon/web-app-manifest-512x512.png
-  // then imagesBase becomes /myrepo/assets/images/
   const imagesBase = url.pathname.replace(/\/favicon\/[^/]+$/, "/");
   const frogSrc = imagesBase + "frog.png";
 
-  // Audio path: keep under /assets/audio/ (but also baseurl-safe)
-  const audioUrl = new URL("/assets/audio/frog.m4a", window.location.origin);
   // If you’re on a subpath site, prefer using the same base as images:
   const basePrefix = imagesBase.split("/assets/")[0]; // e.g. "/myrepo"
-  const audioSrc = basePrefix + "/assets/audio/frog.m4a";
+  const audioSrc = basePrefix + "/assets/audio/frog2.wav";
 
   console.log("[signature-icon] original:", originalSrc);
   console.log("[signature-icon] frogSrc:", frogSrc);
@@ -95,3 +92,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+

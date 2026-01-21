@@ -1,27 +1,9 @@
 ---
-layout: home
+layout: home    
 title: Portfolio
+url: /portfolio
 ---
-<div class="text-center mb-4">
-  <h1 style=""><a href="/">{{ site.title }}</a>
-  </h1>
-  <h2 style=""><a href="/">{{ site.subtitle }}</a></h2>
-    <!-- Social media links section -->
-    <div class="social-links">
-      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-icon linkedin" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <!-- <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="social-icon twitter" aria-label="Twitter"> -->
-        <!-- <i class="fab fa-twitter"></i> -->
-      <!-- </a> -->
-      <a href="https://github.com/{{ site.github_username }}" target="_blank" class="social-icon github" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://soundcloud.com/{{ site.soundcloud_username }}" target="_blank" class="social-icon soundcloud" aria-label="SoundCloud">
-        <i class="fab fa-soundcloud"></i>
-      </a>
-    </div>
-</div>
+
 <!-- Flexbox container for equal height columns -->
 <h2>Portfolio in progress</h2>
 
@@ -35,14 +17,6 @@ title: Portfolio
 
 </div>
 
-<!-- Main Content Section (sets the height for sidebars to match) -->
-<div class="col-md-6 d-flex flex-column">
-  <div id="content" class="main-content rounded flex-grow-1">
-    <!-- Placeholder content -->
-    <!-- {% include headshot.html %} -->
-  </div>
-</div>
-
 <!-- Right Sidebar with Links -->
 <div class="col-md-3 d-flex flex-column align-items-center rounded">
   <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 1</button>
@@ -51,6 +25,15 @@ title: Portfolio
 </div>
 </div>
 
+<!-- Main Content Section (sets the height for sidebars to match) -->
+<div class="col-md-6 d-flex flex-column">
+  <div id="content" class="main-content rounded flex-grow-1">
+    <!-- Placeholder content -->
+    <!-- {% include headshot.html %} -->
+  </div>
+</div>
+
+<!-- 
 <ul>
   {% for post in site.posts %}
     {% if post.tags contains 'work' %}
@@ -59,4 +42,4 @@ title: Portfolio
       </li>
     {% endif %}
   {% endfor %}
-</ul>
+</ul> -->

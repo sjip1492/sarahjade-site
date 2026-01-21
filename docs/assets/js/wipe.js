@@ -1,5 +1,5 @@
 (() => {
-  const DURATION_MS = 10_000;
+  const DURATION_MS = 9_000;
   const RADIUS_PX = 50;
   const HARDNESS = 0.75;
   const STEP_PX = 6;
@@ -122,7 +122,7 @@
       // We want the BLUR BG visible everywhere except the wiped path.
       // So we start opaque, then punch transparent holes.
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "rgba(230,230,230,0.6)";
+      ctx.fillStyle = "rgba(250,250,250,0.65)";
       ctx.fillRect(0, 0, w, h);
 
       ctx.globalCompositeOperation = "destination-out";
