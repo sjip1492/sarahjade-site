@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: content-post
 title: "Attended ACM ISS Conference 2024 in Vancouver"
 date:  2024-10-23
 tag: news

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: content-post
 title: "CS Diversity Awards"
 date:  2025-04-07
 tag: news

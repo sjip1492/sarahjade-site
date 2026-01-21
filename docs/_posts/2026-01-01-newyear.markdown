@@ -1,0 +1,7 @@
+---
+layout: content-post
+title: "Began new project"
+date:  2026-01-01
+tag: news
+---
+Welcomed two new students to the project and began the process of an evaluation study to complete our submission to UIST 2026.

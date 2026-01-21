@@ -207,6 +207,14 @@ a:hover {
 #id {
   padding: 0 15px;
 }
+.site-header h1{
+    text-shadow: 2px 2px 0 #555, 3px 3px 0 #555;
+}
+.site-header a{
+  text-decoration: none;
+  letter-spacing: 4px;
+  font-weight:300;
+}
 
 .content-header {
   font-size: 2rem;

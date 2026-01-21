@@ -1,0 +1,7 @@
+---
+layout: content-post
+title: "Attended UIST 2025 in Busan, SK"
+date:  2025-10-01
+tag: news
+---
+Presented demo SyncFeel at UIST 2025 Student Innovation Competition.

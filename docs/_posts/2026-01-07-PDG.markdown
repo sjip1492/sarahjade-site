@@ -1,0 +1,7 @@
+---
+layout: content-post
+title: "Recipient of Professional Development Grant"
+date:  2026-01-07
+tag: news
+---
+Awarded grant for professional development by the SFU Graduate Students Society.

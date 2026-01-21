@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="content-container blur rounded">
+  <span class="blur-bg" aria-hidden="true"></span>
+  <div class="blur-fg">
+    <h2 class="content-header">{{ page.title }}</h2>
+    <span class="post-date">{{ page.date | date: "%B %-d, %Y" }}</span>
+    {{ content }}
+  </div>
+</div>

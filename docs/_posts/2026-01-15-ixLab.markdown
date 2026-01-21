@@ -1,0 +1,7 @@
+---
+layout: default
+title: "Began ixLab meeting series"
+date:  2026-1-15
+tag: news
+---
+Kicked off the ixLab group collective meetings with a goal-setting and sharing workshop.

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: content-post
 title: "Submission Accepted to UIST SIC"
 date:  2025-08-08
 tag: news

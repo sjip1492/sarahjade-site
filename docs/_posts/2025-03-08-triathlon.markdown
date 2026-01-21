@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: content-post
 title: "Completed first tri-event"
 date:  2025-03-08
 tag: news

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: content-post
 title: "Facilitating Bids for Entry"
 date: 2024-11-01
 tag: work
