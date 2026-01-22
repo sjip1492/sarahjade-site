@@ -13,7 +13,7 @@
   --color-h1-hover: rgb(2, 1, 1);
 
   /* Surfaces */
-  --surface-frost: rgba(255, 255, 255, 0.08);
+  --surface-frost: rgba(255, 255, 255, 0.5);
 
   /* Blur */
   --blur-radius: 8px;
@@ -119,9 +119,9 @@ a:hover {
   filter: blur(var(--blur-radius));
   transform: scale(var(--blur-scale));
   
-  text-shadow:
-  0 1px 2px rgba(0,0,0,0.35),
-  0 0 12px rgba(0,0,0,0.20);
+  /* text-shadow: */
+  /* 0 1px 2px rgba(0,0,0,0.35), */
+  /* 0 0 12px rgba(0,0,0,0.20); */
 }
 /* Make sure blur-fg can host a positioned halo */
 .blur .blur-fg{
@@ -285,7 +285,3 @@ a:hover {
 .social-links i {
   margin-right: 5px;
 }
-
-/* ==========================================================================
-   ANIMATION STYLES
-   ========================================================================== */

@@ -1,45 +1,48 @@
----
-layout: home    
-title: Portfolio
-url: /portfolio
----
+<div class="portfolio-wrap">
+  <div class="portfolio-container blur">
+    <span class="blur-bg" aria-hidden="true"></span>
+    <div class="blur-fg">
+      <div class="portfolio-header">
+        <h2>{{ page.title | default: "Portfolio" }}</h2>
+        {% if page.description %}
+        <p style="margin: 0; opacity: 0.85">{{ page.description }}</p>
+        {% endif %}
+      </div>
 
-<!-- Flexbox container for equal height columns -->
-<h2>Portfolio in progress</h2>
+      {%- assign portfolio_pages = site.pages | where_exp: "p", "p.tags contains
+      'portfolio'" | where_exp: "p", "p.url contains '/portfolio/'" | sort:
+      "date" | reverse -%}
+      Portfolio section under active construction. Please check back on January 23rd 2026, thank you!
+      <!-- <div class="portfolio-grid">
+        {%- for item in portfolio_pages -%}
+        <a class="portfolio-card" href="{{ item.url }}" data-nav>
+          {%- if item.preview_image -%}
+          <img
+            class="portfolio-thumb"
+            src="{{ item.preview_image }}"
+            alt="{{ item.preview_alt | default: item.title | escape }}"
+            loading="lazy"
+          />
+          {%- else -%}
+          <div class="portfolio-thumb"></div>
+          {%- endif -%}
 
-<div class="row d-flex align-items-stretch">
-
-<!-- Left Sidebar with Links -->
-<div class="col-md-3 d-flex flex-column align-items-center rounded">
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 1</button>
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 2</button>
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 3</button>
-
-</div>
-
-<!-- Right Sidebar with Links -->
-<div class="col-md-3 d-flex flex-column align-items-center rounded">
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 1</button>
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 2</button>
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100">item 3</button>
-</div>
-</div>
-
-<!-- Main Content Section (sets the height for sidebars to match) -->
-<div class="col-md-6 d-flex flex-column">
-  <div id="content" class="main-content rounded flex-grow-1">
-    <!-- Placeholder content -->
-    <!-- {% include headshot.html %} -->
+          <div class="portfolio-card-body">
+            <p class="portfolio-title"><b>{{ item.title }}</b></p>
+            {%- if item.subtitle -%}
+            <p class="portfolio-subtitle">{{ item.subtitle }}</p>
+            {%- endif -%}
+            <div class="portfolio-meta">
+              {%- if item.date -%}<span
+                >{{ item.date | date: "%b %-d, %Y" }}</span
+              >{%- endif -%} {%- if item.category -%}<span
+                >• {{ item.category }}</span
+              >{%- endif -%}
+            </div>
+          </div>
+        </a>
+        {%- endfor -%}
+      </div> -->
+    </div>
   </div>
 </div>
-
-<!-- 
-<ul>
-  {% for post in site.posts %}
-    {% if post.tags contains 'work' %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul> -->

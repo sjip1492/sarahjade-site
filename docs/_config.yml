@@ -9,6 +9,7 @@ twitter_username: sarahjip
 github_username:  sjip1492
 linkedin_username:  sarah-jade-pratt
 soundcloud_username: leisurenoise
+footer-credit: "This website was built with love by hand by me."
 
 # Build settings
 markdown: kramdown
@@ -19,11 +20,11 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

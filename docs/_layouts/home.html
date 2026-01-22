@@ -2,43 +2,61 @@
 layout: default
 title: Home
 ---
+
 <!-- Flexbox container for equal height columns -->
 <div class="row d-flex align-items-stretch">
-
-<!-- Left Sidebar with Links -->
-<div class="col-md-3 d-flex flex-column align-items-center rounded">
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100" onclick="loadContent('bio')">
-  <span class="blur-bg" aria-hidden="true"></span>
-  <span class="blur-fg">Bio</span>
-</button>
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100" onclick="loadContent('news')">
-  <span class="blur-bg" aria-hidden="true"></span>
-  <span class="blur-fg">News</span>
-  </button>
-</div>
-
-<!-- Main Content Section (sets the height for sidebars to match) -->
-<div class="col-md-6 d-flex flex-column">
-  <div id="content" class="main-content rounded flex-grow-1">
-    <!-- Placeholder content -->
-     {% include headshot.html %}
+  <!-- Left Sidebar with Links -->
+  <div class="col-md-3 d-flex flex-column align-items-center rounded">
+    <button
+      class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
+      onclick="loadContent('bio')"
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-sharp" aria-hidden="true"></span>
+      <span class="blur-fg">Bio</span>
+    </button>
+    <button
+      class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
+      onclick="loadContent('news')"
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-fg">News</span>
+    </button>
   </div>
-</div>
 
-<!-- Right Sidebar with Links -->
-<div class="col-md-3 d-flex flex-column align-items-center rounded">
+  <!-- Main Content Section (sets the height for sidebars to match) -->
+  <div class="col-md-6 d-flex flex-column">
+    <div id="content" class="main-content rounded flex-grow-1">
+      <!-- Placeholder content -->
+      {% include headshot.html %}
+    </div>
+  </div>
 
-  <button class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100" onclick="loadContent('cv')">
-    <span class="blur-bg" aria-hidden="true"></span>
-    <span class="blur-fg">CV</span> 
-  </button> 
-  
-  <a class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
-    href="{{ 'portfolio' | relative_url }}"
-    data-nav>
-    <span class="blur-bg" aria-hidden="true"></span>
-    <span class="blur-fg">Portfolio →</span>
-  </a>
+  <!-- Right Sidebar with Links -->
+  <div class="col-md-3 d-flex flex-column align-items-center rounded">
+    <button
+      class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
+      onclick="loadContent('cv')"
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-fg">CV</span>
+    </button>
 
-</div>
+    <button
+      class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
+      onclick="loadContent('portfolio')"
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-fg">Portfolio</span>
+    </button>
+
+    <!-- <a
+      class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
+      href="{{ 'portfolio' | relative_url }}"
+      data-nav
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-fg">Portfolio →</span>
+    </a> -->
+  </div>
 </div>

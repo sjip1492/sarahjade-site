@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
-  </head>
-
+  {% include head.html %}
   <body>
     {% include header.html %}
     <main id="app">
-        <div class="container py-5">
-          {{ content }}
-        </div>
-    <img src="{{ '/assets/images/favicon/web-app-manifest-512x512.png' | relative_url }}" alt="anthurium" class="signature-icon">
+      <div class="container">
+        {{ content }}
+      </div>
 
-    <p class="footer-credit">This website was built with love by hand by me. All assets were captured, generated, recorded, and edited by me. </p>
+      {% include anthurium.html %}
+      {% include foot.html %}
+      {% include script.html %}
     </main>
-    <!-- Link to the custom JavaScript file -->
-    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/wipe.js' | relative_url }}"></script>
   </body>
 </html>
