@@ -123,8 +123,8 @@ function toggleSidebars(show) {
  * @param {string} section - Section name or URL to load
  */
 function loadContent(section) {
-  const knownSections = ['bio', 'news', 'cv', 'portfolio', 'portfolio_item', 'news_index'];
-  const mainSections = ['bio', 'news', 'cv', 'portfolio', 'news_index'];
+  const knownSections = ['bio', 'news', 'cv', 'contact','portfolio', 'portfolio_item', 'news_index'];
+  const mainSections = ['bio', 'news', 'cv', 'contact', 'portfolio', 'news_index'];
   
   // Check if it's a known partial or a direct URL
   if (knownSections.includes(section)) {

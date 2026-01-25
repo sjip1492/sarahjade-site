@@ -30,15 +30,17 @@ gallery:
   At RedMane Technology, I served as a lead full-stack developer on public-sector eligibility, enrollment, and case management platforms supporting government healthcare and social benefits programs across the United States and Canada, including the proprietary case management platform, mCase. The mCase platform was a core driver of RedMane’s delivery and services revenue during my tenure. I worked on both new implementations and long-term maintenance for active clients, contributing to systems that were central to the company’s public-sector healthcare and human services portfolio.
 
 
-  A flagship implementation supported the City of San Francisco and a consortium of 35 California counties delivering healthcare coverage to underserved adults and families. These programs—including Healthy San Francisco and California’s County Medical Services Program (CMSP)—required a secure, integrated platform capable of handling complex eligibility rules, enrollment workflows, inter-agency integrations, and strict audit requirements at scale.
+  A flagship implementation supported the City of San Francisco and a consortium of 35 California counties delivering healthcare coverage to underserved adults and families, and served to expand the company's portfolio into a new sector of healthcare benefit management. These programs—including Healthy San Francisco and California’s County Medical Services Program (CMSP)—required a secure, integrated platform capable of handling complex eligibility rules, enrollment workflows, inter-agency integrations, and strict audit requirements at scale.
 
-  As the lead developer, I was responsible not only for feature development, but for long-term system ownership after deployment. This included maintaining production systems, addressing critical issues, supporting evolving policy and program changes, and ensuring platform reliability for programs serving over 160,000 low- and moderate-income residents.
+  As the lead developer for this project's deploy and maintenance, I was responsible not only for feature development, but for long-term system ownership after deployment. This included maintaining production systems, addressing critical issues, supporting evolving policy and program changes, and ensuring platform reliability for programs serving over 160,000 low- and moderate-income residents.
 
-  In addition to healthcare implementations, I contributed to over 15 mCase deployments supporting child welfare agencies, working across domains with similar regulatory, ethical, and operational constraints. I also played a key role in establishing and leading a newly formed QA team spanning the U.S. and Canada, helping define testing practices and quality standards for a growing suite of public-sector implementations.
+  In addition to healthcare implementations, I contributed to dozens fo mCase deployments supporting child welfare agencies, working across domains with similar regulatory, ethical, and operational constraints. 
+  
+  I also played a key role in establishing and leading a newly formed QA team spanning the U.S. and Canada, helping define testing practices, production monitoring practices, and quality standards for a growing suite of public-sector implementations.
 
   Across these projects, my work consistently involved translating policy and regulatory requirements into reliable, usable software—while collaborating closely with frontline staff, administrators, and program leadership to ensure systems aligned with real-world workflows and human needs.
 
-### Result
+### TL;DR
   • Led development and post-deployment maintenance of healthcare eligibility and enrollment systems used across San Francisco and 35 California counties  
   • Supported government healthcare programs serving 160,000+ low- and moderate-income residents  
   • Worked on systems that represented a significant portion of the organization’s delivery and services work during my tenure  
