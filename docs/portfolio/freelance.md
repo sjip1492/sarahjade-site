@@ -1,11 +1,11 @@
 ---
 layout: portfolio_item
 tags: [portfolio]
-title: "SyncFeel"
-subtitle: "Robotic arm + ultrasonic speaker for private, spatial audio interactions"
-date: 2025-11-18
-category: "Haptic"
-
+title: "Freelance"
+subtitle: "Web design and marketing"
+date: 2023-01-01
+category: "Web Design"
+github: github.com
 preview_image: /assets/images/upaies-preview.png
 preview_alt: "Robot arm aiming a directional speaker"
 

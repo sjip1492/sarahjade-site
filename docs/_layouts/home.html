@@ -4,15 +4,15 @@ title: Home
 ---
 
 <!-- Flexbox container for equal height columns -->
-<div class="row d-flex align-items-stretch">
+<div class="row d-flex-nimp align-items-stretch">
   <!-- Left Sidebar with Links -->
-  <div class="col-md-3 d-flex flex-column align-items-center rounded">
+  <div class="col-md-3 d-flex-nimp flex-column align-items-center rounded">
     <button
       class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
-      onclick="loadContent('bio')"
+      onclick="loadContent('')"
     >
       <span class="blur-bg" aria-hidden="true"></span>
-      <span class="blur-sharp" aria-hidden="true"></span>
+      <!-- <span class="blur-sharp" aria-hidden="true"></span> -->
       <span class="blur-fg">Bio</span>
     </button>
     <button
@@ -25,15 +25,43 @@ title: Home
   </div>
 
   <!-- Main Content Section (sets the height for sidebars to match) -->
-  <div class="col-md-6 d-flex flex-column">
+  <div class="col-md-6 d-flex-nimp flex-column">
     <div id="content" class="main-content rounded flex-grow-1">
       <!-- Placeholder content -->
-      {% include headshot.html %}
+      <div class="content-container blur rounded">
+        <span class="blur-bg" aria-hidden="true"></span>
+        <div class="blur-fg">
+          <div class="bio-text-container">
+            <h2 class="content-header">{{ page.title }}</h2>
+            {{ page.byline }} 
+            
+            <img
+              src="{{ '/assets/images/me4.png' | relative_url }}"
+              alt="Picture of myself. I have dyed brown-red hair and am wearing a long sleeves white t-shirt and a blue necklace."
+              class="img-fluid rounded bio-photo"
+            />
+
+            {{ content }}
+          </div>
+        </div>
+      </div>
+      <h2></h2>
     </div>
+
+    <!-- Back button for portfolio items (hidden by default) -->
+    <button
+      id="back-button"
+      class="btn blur text-box nav-button-container mb-2 w-100"
+      onclick="loadContent('portfolio')"
+      style="display: none"
+    >
+      <span class="blur-bg" aria-hidden="true"></span>
+      <span class="blur-fg">← Back</span>
+    </button>
   </div>
 
   <!-- Right Sidebar with Links -->
-  <div class="col-md-3 d-flex flex-column align-items-center rounded">
+  <div class="col-md-3 d-flex-nimp flex-column align-items-center rounded">
     <button
       class="btn nav-button-container-2 blur text-box nav-button-container mb-2 w-100"
       onclick="loadContent('cv')"

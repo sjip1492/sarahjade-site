@@ -1,15 +1,16 @@
 ---
-layout: content
+layout: portfolio-item
 tags: [portfolio]
-title: "1Directional Robotic Audio"
-subtitle: "Robotic arm + ultrasonic speaker for private, spatial audio interactions"
-date: 2025-11-18
-category: "Tangible Audio Interfaces"
+title: "Embodied Audio"
+subtitle: "Robotic arm + ultrasonic speaker for novel audio interactions"
+date: 2025-08-25
+github: github.com
+# category: "Tangible Audio Interfaces"
 
 preview_image: /assets/images/upaies-preview.png
 preview_alt: "Robot arm aiming a directional speaker"
 
-short_description: "A prototype exploring person-specific sound delivery using a robotic arm-mounted parametric speaker."
+description: "A prototype exploring person-specific sound delivery using a robotic arm-mounted parametric speaker."
 overview: "A prototype exploring person-specific sound delivery using a robotic arm-mounted parametric speaker."
 role: "Designer"
 skills:
@@ -20,23 +21,23 @@ skills:
   - Rapid Iteration
 
 gallery:
-  - src: /assets/images/portfolio/directional-audio/fig1.jpg
+  - src: /assets/images/upaies-preview.png
     title: "title"
     description: "System overview: robotic arm + speaker and interaction space."
-  - src: /assets/images/portfolio/directional-audio/fig2.jpg
+  - src: /assets/images/upaies-preview.png
     title: "Participant using the system"
     description: "Study setup used in our evaluation sessions."
 
 layout: portfolio_item
 tools: [ROS, MoveIt, Unity, Figma]    # array
-# skills: [Prototyping, User Research]  # array (already)
+skills: [Prototyping, User Research]  # array (already)
 ---
 
-### What this is
+<!-- ### What this is -->
 Write your longer body content here in Markdown.
 
-### What I did
+<!-- ### What I did -->
 - Bullet points, methods, outcomes, etc.
 
-### Result
+<!-- ### Result -->
 Add outcomes, links, etc.

@@ -6,9 +6,10 @@
  * @param {Object} options - Configuration options
  * @param {boolean} options.updateTitle - Whether to update document title (default: false)
  * @param {boolean} options.updateHistory - Whether to push to history state (default: false)
+ * @param {boolean} options.hideSidebars - Whether to hide sidebar navigation (default: false)
  * @returns {Promise<void>}
  */
-async function loadContentFromUrl(url, { updateTitle = false, updateHistory = false } = {}) {
+async function loadContentFromUrl(url, { updateTitle = false, updateHistory = false, hideSidebars = false } = {}) {
   const contentEl = document.getElementById('content');
   if (!contentEl) {
     console.error('Content element not found');
@@ -57,12 +58,63 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
     if (window.initBlurWipe) {
       window.initBlurWipe(contentEl);
     }
+
+    // Handle sidebar visibility
+  const inferredHide = hideSidebars || shouldHideSidebarsForUrl(url);
+  toggleSidebars(!inferredHide);
   } catch (error) {
     console.error('Failed to load content:', error);
     contentEl.innerHTML = '<p>Error loading content. Please try again.</p>';
     contentEl.style.opacity = '1';
   }
 }
+
+/**
+ * Toggle visibility of sidebar navigation and back button.
+ * When showing sidebars, hides the back button and shows nav buttons.
+ * When hiding sidebars, shows the back button and hides nav buttons.
+ * Also adjusts central pane width to fill space when sidebars are hidden.
+ * 
+ * @param {boolean} show - Whether to show sidebars (true = show nav buttons, false = show back button)
+ */
+function toggleSidebars(show) {
+  const contentEl = document.getElementById('content');
+  if (!contentEl) return;
+
+  const row = contentEl.closest('.row');
+  if (!row) return;
+
+  const sideCols = row.querySelectorAll(':scope > .col-md-3');
+  const centralCol = row.querySelector(':scope > .col-md-6, :scope > .col-md-12');
+  const backBtn = document.getElementById('back-button');
+
+  if (show) {
+    // Show sidebars
+    sideCols.forEach(col => (col.style.display = ''));
+
+    // Hide back button
+    if (backBtn) backBtn.style.display = 'none';
+
+    // Restore central column width
+    if (centralCol) {
+      centralCol.classList.remove('col-md-12');
+      centralCol.classList.add('col-md-6');
+    }
+  } else {
+    // Hide sidebars
+    sideCols.forEach(col => (col.style.display = 'none'));
+
+    // Show back button
+    if (backBtn) backBtn.style.display = '';
+
+    // Expand central column
+    if (centralCol) {
+      centralCol.classList.remove('col-md-6');
+      centralCol.classList.add('col-md-12');
+    }
+  }
+}
+
 
 /**
  * Legacy AJAX loader for sidebar buttons. Supports both partials and full pages.
@@ -72,14 +124,31 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
  */
 function loadContent(section) {
   const knownSections = ['bio', 'news', 'cv', 'portfolio', 'portfolio_item', 'news_index'];
+  const mainSections = ['bio', 'news', 'cv', 'portfolio', 'news_index'];
   
+  // Check if it's a known partial or a direct URL
   if (knownSections.includes(section)) {
     // Known partial; load from section path
-    loadContentFromUrl(`/${section}`, { updateTitle: false });
+    // Portfolio items: hide sidebars and don't update URL
+    const isPortfolioItem = !mainSections.includes(section);
+    loadContentFromUrl(`/${section}`, { 
+      updateTitle: false,
+      updateHistory: false,
+      hideSidebars: isPortfolioItem
+    });
+  } else if (section.startsWith('/') || section.includes('.')) {
+    // Direct URL (e.g., /portfolio/upaies.html or /portfolio/upaies)
+    // Treat as portfolio item
+    loadContentFromUrl(section, { 
+      updateTitle: false,
+      updateHistory: false,
+      hideSidebars: true
+    });
   } else {
     // External link; full navigation
     window.location.href = section;
   }
+  
 }
 
 /**
@@ -121,7 +190,8 @@ function loadContent(section) {
     const url = new URL(a.href, window.location.origin).toString();
     
     // Load with history update
-    loadContentFromUrl(url, { updateTitle: true, updateHistory: true }).catch(() => {
+    const hideSidebars = shouldHideSidebarsForUrl(url);
+    loadContentFromUrl(url, { updateTitle: true, updateHistory: true, hideSidebars }).catch(() => {
       window.location.href = a.href;
     });
   });
@@ -130,8 +200,17 @@ function loadContent(section) {
   window.addEventListener("popstate", (e) => {
     const url = (e.state && e.state.url) ? e.state.url : window.location.href;
     // Load without pushing to history (popstate already handled it)
-    loadContentFromUrl(url, { updateTitle: true, updateHistory: false }).catch(() => {
+    const hideSidebars = shouldHideSidebarsForUrl(url);
+    loadContentFromUrl(url, { updateTitle: true, updateHistory: false, hideSidebars })
+    .catch(() => {
       window.location.href = url;
     });
   });
 })();
+function shouldHideSidebarsForUrl(urlString) {
+  const u = new URL(urlString, window.location.origin);
+  const path = u.pathname.replace(/\/+$/, ''); // trim trailing slash
+
+  // Hide sidebars for portfolio *items*, but not the portfolio index
+  return path.startsWith('/portfolio') && path !== '/portfolio';
+}

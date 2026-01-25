@@ -1,134 +1,114 @@
+---
+layout: content
+---
+
 <div class="pi-wrap">
   <!-- HERO -->
-  <section class="pi-hero">
-    <div class="pi-hero-text">
-      <h1 class="pi-title">{{ page.title }}</h1>
-      {% if page.subtitle %}<p class="pi-subtitle">{{ page.subtitle }}</p>{% endif %}
+  <h2 class="content-header">{{ page.title }}</h2>
+  <div class="pi-meta">
+    {% if page.date %}<span>{{ page.date | date: "%B %-d, %Y" }}</span>{% endif
+    %} {% if page.category %}<span>• {{ page.category }}</span>{% endif %}
+  </div>
 
-      <div class="pi-meta">
-        {% if page.date %}<span>{{ page.date | date: "%B %-d, %Y" }}</span>{% endif %}
-        {% if page.category %}<span>• {{ page.category }}</span>{% endif %}
+  <!-- INFO BLOCK -->
+  <div class="pi-info" style="margin-top: 1rem">
+    <div class="pi-info-grid">
+      <div>
+        <p class="pi-label">Overview</p>
+        <p class="pi-overview">
+          {{ page.overview | default: page.short_description | default: "" }}
+        </p>
       </div>
 
-      <!-- INFO BLOCK -->
-      <div class="pi-info" style="margin-top: 1rem;">
-        <div class="pi-info-grid">
-          <div>
-            <p class="pi-label">Overview</p>
-            <p class="pi-overview">
-              {{ page.overview | default: page.short_description | default: "" }}
-            </p>
-
-            <!-- Optional: allow normal markdown body above gallery -->
-            {% if content and content != "" %}
-              <div class="pi-body">
-                {{ content }}
-              </div>
-            {% endif %}
-          </div>
-
-          <div>
-            {% if page.role %}
-              <p class="pi-label">Role</p>
-              <p style="margin:0 0 .9rem 0; opacity:.9;">{{ page.role }}</p>
-            {% endif %}
-
-            {% if page.skills %}
-              <p class="pi-label">Skills</p>
-              <ul class="pi-pill-list">
-                {% for s in page.skills %}<li class="pi-pill">{{ s }}</li>{% endfor %}
-              </ul>
-            {% endif %}
-
-            {% if page.tools %}
-              <p class="pi-label" style="margin-top: .9rem;">Tools</p>
-              <ul class="pi-pill-list">
-                {% for t in page.tools %}<li class="pi-pill">{{ t }}</li>{% endfor %}
-              </ul>
-            {% endif %}
-          </div>
-        </div>
+      <div class="pi-data">
+        {% if page.role %}
+        <p class="pi-label">Role</p>
+        <p style="margin: 0 0 0.9rem 0">{{ page.role }}</p>
+        {% endif %} {% if page.skills %}
+        <p class="pi-label">Skills</p>
+        <ul class="pi-pill-list">
+          {% for s in page.skills %}
+          <li class="pi-pill">{{ s }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% if page.tools %}
+        <p class="pi-label" style="margin-top: 0.9rem">Tools</p>
+        <ul class="pi-pill-list">
+          {% for t in page.tools %}
+          <li class="pi-pill">{{ t }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     </div>
 
-    <div class="pi-hero-img">
-      {% if page.preview_image %}
-        <img
-          src="{{ page.preview_image }}"
-          alt="{{ page.preview_alt | default: page.title | escape }}"
-          loading="eager"
-        />
-      {% else %}
-        <div style="width:100%; aspect-ratio:16/10;"></div>
-      {% endif %}
-    </div>
-  </section>
+    <!-- Optional: allow normal markdown body above gallery -->
+    {% if content and content != "" %}
+    <div class="pi-body">{{ content }}</div>
+    {% endif %}
+  </div>
 
   <!-- SPLIT GALLERY -->
   {% if page.gallery %}
-    <section class="pi-split" id="portfolio-gallery">
-      <div class="pi-images">
-        {% for g in page.gallery %}
-          <figure class="pi-figure" data-title="{{ g.title | escape }}" data-description="{{ g.description | escape }}">
-            <img src="{{ g.src }}" alt="{{ g.alt | default: page.title | escape }}" loading="lazy" />
-          </figure>
-        {% endfor %}
-      </div>
-
-      <aside class="pi-side" aria-live="polite">
-        <h3>Details</h3>
-        <p class="pi-side-title" id="piSideTitle">
-          {{ page.gallery[0].title | default: "Gallery" }}
-        </p>
-        <p class="pi-side-desc" id="piSideDesc">
-          {{ page.gallery[0].description | default: "Scroll the images to view details." }}
-        </p>
-      </aside>
-    </section>
+  <div class="pi-split" id="portfolio-gallery">
+    <div class="pi-images">
+      {% for g in page.gallery %}
+      <figure
+        class="pi-figure"
+        data-title="{{ g.title | escape }}"
+        data-description="{{ g.description | escape }}"
+      >
+        <img
+          src="{{ g.src }}"
+          alt="{{ g.alt | default: page.title | escape }}"
+          loading="lazy"
+        />
+        <caption class="pi-figure-caption">
+          {% if g.title %}<strong>{{ g.title }}</strong
+          >{% endif %} {% if g.description %}<br />{{ g.description }}{% endif%}
+        </caption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
   {% endif %}
 
   <!-- NAV: Back + Next -->
-  {%- assign portfolio_pages = site.pages
-    | where_exp: "p", "p.tags contains 'portfolio'"
-    | where_exp: "p", "p.url contains '/portfolio/'"
-    | sort: "date"
-  -%}
-
-  {%- assign next_item = nil -%}
-  {%- for p in portfolio_pages -%}
-    {%- if p.url == page.url -%}
-      {%- assign idx = forloop.index0 -%}
-      {%- assign next_index = idx | plus: 1 -%}
-      {%- if next_index < portfolio_pages.size -%}
-        {%- assign next_item = portfolio_pages[next_index] -%}
-      {%- endif -%}
-    {%- endif -%}
-  {%- endfor -%}
+  {%- assign portfolio_pages = site.pages | where_exp: "p", "p.tags contains
+  'portfolio'" | where_exp: "p", "p.url contains '/portfolio/'" | sort: "date"
+  -%} {%- assign next_item = nil -%} {%- for p in portfolio_pages -%} {%- if
+  p.url == page.url -%} {%- assign idx = forloop.index0 -%} {%- assign
+  next_index = idx | plus: 1 -%} {%- if next_index < portfolio_pages.size -%}
+  {%- assign next_item = portfolio_pages[next_index] -%} {%- endif -%} {%- endif
+  -%} {%- endfor -%}
 
   <div class="pi-nav">
     {% if next_item %}
-      <a class="btn pjax-link" href="{{ next_item.url }}">Next Portfolio Item →</a>
+    <a class="btn pjax-link" href="{{ next_item.url }}"
+      >Next Portfolio Item →</a
+    >
     {% else %}
-      <!-- If this is the newest/last chronologically, loop to the first (optional) -->
-      {%- assign first_item = portfolio_pages[0] -%}
-      {% if first_item and first_item.url != page.url %}
-        <a class="btn pjax-link" href="{{ first_item.url }}">Next Portfolio Item →</a>
-      {% endif %}
-    {% endif %}
+    <!-- If this is the newest/last chronologically, loop to the first (optional) -->
+    {%- assign first_item = portfolio_pages[0] -%} {% if first_item and
+    first_item.url != page.url %}
+    <a class="btn pjax-link" href="{{ first_item.url }}"
+      >Next Portfolio Item →</a
+    >
+    {% endif %} {% endif %}
   </div>
 </div>
 
 <script>
   // Sticky side panel updates based on which image is most visible.
   (function () {
-    const figures = Array.from(document.querySelectorAll('.pi-figure'));
-    const titleEl = document.getElementById('piSideTitle');
-    const descEl = document.getElementById('piSideDesc');
+    const figures = Array.from(document.querySelectorAll(".pi-figure"));
+    const titleEl = document.getElementById("piSideTitle");
+    const descEl = document.getElementById("piSideDesc");
     if (!figures.length || !titleEl || !descEl) return;
 
     function setSide(fig) {
-      const t = fig.getAttribute('data-title') || 'Gallery';
-      const d = fig.getAttribute('data-description') || ' ';
+      const t = fig.getAttribute("data-title") || "Gallery";
+      const d = fig.getAttribute("data-description") || " ";
       titleEl.textContent = t;
       descEl.textContent = d;
     }
@@ -136,14 +116,17 @@
     // Default to first
     setSide(figures[0]);
 
-    const obs = new IntersectionObserver((entries) => {
-      // pick the entry with the highest intersection ratio
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setSide(visible.target);
-    }, { threshold: [0.25, 0.5, 0.75], rootMargin: "0px 0px -40% 0px" });
+    const obs = new IntersectionObserver(
+      (entries) => {
+        // pick the entry with the highest intersection ratio
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setSide(visible.target);
+      },
+      { threshold: [0.25, 0.5, 0.75], rootMargin: "0px 0px -40% 0px" },
+    );
 
-    figures.forEach(f => obs.observe(f));
+    figures.forEach((f) => obs.observe(f));
   })();
 </script>

@@ -27,7 +27,7 @@
   --transition-med: 0.4s ease-in-out;
 
   /* Background image */
-  --page-bg-image: url("/assets/images/DSCN0943.JPG");
+  --page-bg-image: url("/assets/images/DSCN0943_low.JPG");
   --page-bg-size: cover;
   --page-bg-position: center;
   --page-bg-attachment: fixed;
@@ -245,6 +245,10 @@ a:hover {
   border-radius: var(--radius) !important;
 }
 
+.d-flex-nimp {
+  display: flex;
+}
+
 /* ==========================================================================
    SOCIAL MEDIA LINKS
    ========================================================================== */
@@ -284,4 +288,31 @@ a:hover {
 
 .social-links i {
   margin-right: 5px;
+}
+
+.bio-text-container {
+  line-height: 1.6;
+}
+
+.bio-photo {
+  float: right;              /* or left */
+  width: 220px;              /* control size */
+  margin: 0 0 1rem 1.5rem;   /* spacing from text */
+  border-radius: 12px;
+}
+
+/* Mobile: stack instead of wrap */
+@media (max-width: 768px) {
+  .bio-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 70%;
+  }
+}
+.bio-photo {
+  float: right;
+  shape-outside: circle(58%);
+  clip-path: circle(58%);
+  max-height: 22em;
 }

@@ -1,5 +1,5 @@
 ---
-layout: content
+layout: content-post
 title: CV
 url: cv
 ---
