@@ -26,7 +26,7 @@ gallery:
   - src: /assets/images/upaies-preview.png
     title: "title"
     description: "System overview: robotic arm + speaker and interaction space."
-  - src: /assets/images/upaies-preview.png
+  - src: /portfolio/images/upaies_setup.png
     title: "Participant using the system"
     description: "Study setup used in our evaluation sessions."
 
