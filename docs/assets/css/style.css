@@ -27,7 +27,7 @@
   --transition-med: 0.4s ease-in-out;
 
   /* Background image */
-  --page-bg-image: url("/assets/images/DSCN0943_low.JPG");
+  --page-bg-image: url("/assets/images/DSCN0943_low.jpg");
   --page-bg-size: cover;
   --page-bg-position: center;
   --page-bg-attachment: fixed;
