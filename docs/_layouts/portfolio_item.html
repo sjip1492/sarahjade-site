@@ -1,8 +1,8 @@
----
-layout: content
----
+<!-- --- -->
+<!-- layout: content -->
+<!-- --- -->
 
-<div class="pi-wrap">
+<div class="content-container rounded pi-wrap">
   <!-- HERO -->
   <h2 class="content-header">{{ page.title }}</h2>
   <div class="pi-meta">
@@ -71,7 +71,10 @@ layout: content
       {% endfor %}
     </div>
   </div>
-  {% endif %}
+  {% endif %} 
+  
+  {% if page.gallery %} {% include gallery_carousel.html
+  images=page.gallery id=page.slug %} {% endif %}
 
   <!-- NAV: Back + Next -->
   {%- assign portfolio_pages = site.pages | where_exp: "p", "p.tags contains

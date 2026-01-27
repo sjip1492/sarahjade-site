@@ -1,0 +1,38 @@
+{% comment %}
+Usage:
+{% include figure_wrap.html
+  src="/assets/images/foo.jpg"
+  alt="Alt text"
+  title="Figure title"
+  caption="Short caption."
+  align="right"        
+  col="5"             
+  class="my-extra-class"
+%}
+{% endcomment %}
+
+{% assign align = include.align | default: "right" %}
+{% assign col = include.col | default: "5" %}
+
+<figure
+  class="figure figure-wrap figure-wrap-{{ align }} col-md-{{ col }}"
+>
+  <div class="figure-wrap-frame">
+    <img
+      src="{{ include.src | relative_url }}"
+      class="figure-img img-fluid {{ include.class | default: '' }}" 
+      alt="{{ include.alt | escape }}"
+      loading="lazy"
+    />
+  </div>
+
+  {% if include.title %}
+    <div class="figure-wrap-title">{{ include.title }}</div>
+  {% endif %}
+
+  {% if include.caption %}
+    <figcaption class="figure-caption figure-wrap-caption">
+      {{ include.caption }}
+    </figcaption>
+  {% endif %}
+</figure>

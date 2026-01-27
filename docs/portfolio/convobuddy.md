@@ -3,227 +3,129 @@ layout: portfolio_item
 tags: [portfolio]
 title: "ConvoBuddy"
 subtitle: "A real-time conversational group-entry assistant for networking events"
-date: 2025-01-01
+date: 2025-04-01
 category: "Interaction Design"
 
 preview_image: /portfolio/images/convobuddy_1.png
 preview_alt: "Screenshot of the UI for the intro screen of ConvoBuddy app."
 
-short_description: "A mobile web application that helps users confidently join ongoing group conversations by providing topic summaries, join suggestions, and timing cues."
-skills:
-  - Interaction Design
-  - User Research
-  - Prototyping
-  - Real-time Systems
-  - Human-Centered AI
-  - Data Visualization
-  - Rapid Iteration
+short_description: "Facilitating smooth entry into ongoing conversations is essential for fostering inclusive social interactions, yet it remains one of the most challenging aspects of conversational dynamics. We present ConvoBuddy, a novel conversational assistant designed to support users actively seeking to join existing conversational groups based upon a preliminary need-finding user study and literature review. The aim of ConvoBuddy is to level the playing field when it comes to navigating informal networking and social scenarios for individuals with social difficulties or anxiety. ConvoBuddy leverages smartphone-based sensors to detect conversational group spatial formations in real time and incorporates entry timing and turn-taking management."
 
-gallery:
-  - src: /portfolio/images/convobuddy_fgroup.jpg
-    alt: "Participant using the system"
-    caption: "Study setup used in our evaluation sessions."
-  - src: /portfolio/images/convobuddy_bar.png
-    alt: "Participant using the system"
-    caption: "Study setup used in our evaluation sessions."
-  - src: /portfolio/images/convobuddy_1.png
-    alt: "System overview diagram"
-    caption: "System overview: robotic arm + speaker and interaction space."
-  - src: /portfolio/images/convobuddy_2.png
-    alt: "Participant using the system"
-    caption: "Study setup used in our evaluation sessions."
-  - src: /portfolio/images/convobuddy_3.png
-    alt: "Participant using the system"
-    caption: "Study setup used in our evaluation sessions."
+skills:
+  - Interaction design
+  - User research
+  - Prototyping
+  - Real-time systems
+  - Human-centered AI
+  - Need-finding
 ---
 
-#### Overview
+{% include figure_wrap.html
+  src='/portfolio/images/convobuddy_1.png'
+  alt='Screenshot of the UI for the intro screen of ConvoBuddy app'
+  title='UI Screenshot'
+  caption='Screenshot of the UI for the intro screen of ConvoBuddy app.'
+  align='right'
+  col='5'
+  class='max-height-20em'
+%}
 
-ConvoBuddy is a mobile, real-time conversational assistant designed to support confident entry into ongoing group conversations. It helps users decide where, when, and how to join by providing contextual awareness of nearby conversational groups, including topic summaries, suggested entry points, and timing cues.
+<h4 class="pi-label">Motivation</h4>
 
-The system targets networking and social events with limited pre-existing social context, where conversational uncertainty can lead to hesitation, exclusion, or avoidance. ConvoBuddy reframes group entry as a supported interaction rather than a purely social gamble.
+Entering an ongoing group conversation is a common yet under-supported social challenge. Individuals often hesitate because they lack context and confidence when joining a group.  These uncertainties compound into social anxiety. Existing social technologies focus on connection before or after interaction (e.g., messaging, conversation facilitation, matchmaking), but offer little support in the moment of embodied social engagement.
 
-#### Problem Space
+ConvoBuddy aims to address this gap by providing real-time, situated assistance at the moment of conversational entry.
 
-Entering an ongoing group conversation is a common yet under-supported social challenge. Individuals often hesitate because they lack information about:
+<h4 class="pi-label">Need-Finding & Research Insights</h4>
 
-what the group is talking about
+To ground the design, we conducted a need-finding survey exploring discomfort, decision factors, and desired technological support for joining group conversations.
 
-whether the conversation is interruptible
+<h5 class="pi-label">Participants</h5>
 
-what contribution would be appropriate
+- 13 participants (ages 18–54; median 18–24), recruited via social networks and online communities.
 
-when a natural opening to speak will occur
+<h5 class="pi-label">Key findings</h5>
 
-These uncertainties compound into social anxiety, even among otherwise confident participants. Existing social technologies focus on connection before or after interaction (e.g., messaging, matchmaking), but offer little support in the moment of embodied social engagement.
+A majority of participants reported discomfort joining ongoing conversations. Most participants decided whether to join based on:
 
-ConvoBuddy addresses this gap by providing real-time, situated assistance at the moment of conversational entry.
-
-Need-Finding & Research Insights
-
-To ground the design, we conducted a short need-finding survey exploring discomfort, decision factors, and desired technological support for joining group conversations.
-
-#### Participants
-
-13 participants (ages 18–54; median 18–24)
-
-Recruited via social networks and online communities
-
-#### Key findings
-
-A majority of participants reported discomfort joining ongoing conversations
-
-Most participants decided whether to join based on:
-
-topic relevance to their interests or knowledge
-
-perceived interruptibility and conversational flow
+- topic relevance to their interests or knowledge
+- perceived interruptibility and conversational flow
 
 Participants strongly valued:
 
-knowing the topic before joining
-
-receiving suggestions for what to say
-
-cues for when to speak
+- knowing the topic before joining
+- receiving suggestions for what to say
+- cues for when to speak
 
 These findings directly informed ConvoBuddy’s core features: topic summarization, contribution suggestions, and timing cues.
 
-#### Design Concept
+{% include figure_wrap.html
+  src='/portfolio/images/convobuddy_bar.png'
+  alt='Bar graph showing the preferences of participants valuing the following: topic summarization, contribution suggestions, and timing cues'
+  title='Needfinding results'
+  caption='Participant responses to the question "If you had a technology-based tool to help you join a conversational group, how would you prefer this tool to assist you in joining conversations?"'
+  align='left'
+  col='5'
+  class='max-height-20em'
+%}
+<br><br><br><br>
+<h4 class="pi-label">Design Concept</h4>
 
 ConvoBuddy is designed as a shared, opt-in system used by participants at the same event. Each user accesses the system through a mobile web interface, eliminating the need for specialized hardware or installation.
 
 The interface is split into two complementary views:
 
-##### Spatial map view
+<h5 class="pi-label">Spatial map view</h5>
 
 Users are represented as points with orientation arrows
 
-Conversational groups are detected and color-coded
+- Conversational groups are detected via an f-formation detection algorithm
+- Grouped conversations are color-coded
+- The map reflects the physical layout of the social space
 
-The map reflects the physical layout of the social space
-
-##### Conversation context view
-
-Each detected group is paired with a live topic summary
-
-Users can open a group to view a truncated transcript and join tips
-
-This design allows users to fluidly move between physical awareness and conversational understanding.
-
-#### Interaction Flow
-
-The user opens ConvoBuddy upon arriving at an event
-
-Nearby conversational groups appear on a live map
-
-Each group is paired with a short topic summary
-
-The user selects a group of interest
-
-ConvoBuddy displays:
-
-a brief transcript excerpt
-
-suggested ways to enter the conversation
-
-A timing cue activates when a conversational pause is detected, subtly signaling an opportunity to speak
-
-The system is intentionally lightweight and non-directive, offering support without scripting social behavior.
-
-#### System Architecture
-
-ConvoBuddy is implemented as a mobile-friendly web application using a distributed, real-time architecture.
+{% include figure_wrap.html
+  src='/portfolio/images/convobuddy_4.png'
+  alt='Screenshot of UI showing three existing conversational groups.'
+  title='Map view'
+  caption='Screenshot of UI showing three existing conversational groups.'
+  align='right'
+  col='5'
+  class='max-height-20em'
+%}
 
 
-##### ConvoAnalyser (Python)
+<h5 class="pi-label">Conversation context view</h5>
 
-Processes phone sensor data (gyroscope, accelerometer)
+- Each detected group is paired with a live topic summary
+- Users can open a group to view a truncated transcript and tips for how to join in
+- Tips for joining were informed by conversational social psychology literature review
+- This design allows users to fluidly move between physical awareness and conversational understanding.
 
-Performs lightweight f-formation detection using proximity and orientation heuristics
+<h4 class="pi-label">System Architecture</h4>
 
-Groups users into conversational clusters
+ConvoBuddy is implemented as a mobile-friendly web application using a distributed, real-time architecture, using Flask for back-end server architecture and a node.js client-side application. 
 
-Aggregates speech transcripts per group
+<h5 class="pi-label">ConvoAnalyser (Flask back-end)</h5>
 
-Calls an external LLM to generate:
+- Processes phone sensor data (gyroscope, accelerometer)
+- Performs lightweight f-formation detection using proximity and orientation heuristics
+- Groups users into conversational clusters
+- Aggregates speech transcripts per group
+- Calls an external LLM to generate topic summaries and curated conversational entry suggestions
 
-topic summaries
-
-conversational entry suggestions
-
-##### TranslateServer (Node.js)
-
-Acts as a wrapper for LLM API requests
-
-Handles authentication and request management
-
-Simplifies communication between services
-
-##### Real-Time Interaction Layer
+<h5 class="pi-label">Real-Time Interaction Layer (Node.js)</h5>
 
 The client-side Node.js application is responsible for:
 
-Collecting sensor and speech data from mobile devices
+- Collecting sensor and speech data from mobile devices
+- Mapping speakers to relative spatial positions
+- Rendering conversational clusters in real time
+- Color-coding groups for visual correlation
+- Detecting conversational pauses using a silence/noise threshold
+- Displaying summaries, transcripts, and entry tips
 
-Mapping speakers to relative spatial positions
+<h4 class="pi-label">Outcome & Recognition</h4>
 
-Rendering conversational clusters in real time
+ConvoBuddy reframes conversational entry as a designable interaction problem. By supporting people at the precise moment of social engagement, we encourage a future of human-centered AI systems that enhance social agency and connection.
 
-Color-coding groups for visual correlation
-
-Detecting conversational pauses using a silence/noise threshold
-
-Displaying summaries, transcripts, and entry tips
-
-Rather than providing exact turn-taking signals, the timing cue functions as an anticipatory nudge, respecting the fluid nature of human conversation.
-
-#### Design Decisions & Trade-offs
-
-Relative positioning instead of GPS
-Avoids the precision and infrastructure requirements of absolute positioning indoors.
-
-Web application instead of native app
-Reduces friction and lowers barriers to adoption at events.
-
-Heuristic group detection
-Prioritizes responsiveness and usability over perfect accuracy.
-
-Non-directive cues
-Supports user agency rather than prescribing social behavior.
-
-#### Outcome & Recognition
-
-Developed a fully functional real-time prototype
-
-Demonstrated end-to-end interaction from sensing → summarization → social cueing
-
-Presented the project at the CS Diversity Awards, where it was nominated as a finalist
-
-#### Research Contributions
-
-ConvoBuddy contributes to HCI research by:
-
-Exploring AI-mediated support for in-situ social interaction, rather than pre- or post-interaction tooling
-
-Combining spatial sensing, conversational analysis, and LLMs into a unified real-time system
-
-Demonstrating how subtle, non-verbal cues can scaffold social confidence without overt intervention
-
-#### Future Directions
-
-Potential extensions include:
-
-More robust group detection under dynamic movement
-
-Privacy-preserving on-device speech processing
-
-Evaluation in real networking or conference settings
-
-Adaptive summarization based on user goals
-
-Longitudinal studies on confidence and social inclusion
-
-#### Why this matters
-
-ConvoBuddy reframes conversational entry as a designable interaction problem, not a personal shortcoming. By supporting people at the precise moment of social engagement, it points toward a future of human-centered AI systems that enhance—not replace—social agency.
+My development partner Kenny Zhang and I presented this project at the [SFU CS Diversity Awards](https://www.sfu.ca/fas/computing/about/diversity-cs/csdc-diversity-project-presentations/2025-diversity-project-presentations.html) in April 2025, where it was nominated as a finalist.

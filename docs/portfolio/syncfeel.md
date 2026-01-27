@@ -18,17 +18,6 @@ skills:
   - Multimodal Interfaces
   - Research Prototyping
   - Cognitive Systems Design
-
-gallery:
-  - src: /portfolio/images/syncfeel_img.png
-    alt: "Concept illustration of SyncFeel with a diagram of a student wearing the bracelet while studying."
-    caption: "Concept illustration of SyncFeel."
-  - src: /portfolio/images/syncfeel_img.jpg
-    alt: "Photograph of the haptic wearable device."
-    caption: "Photograph of the haptic wearable device."
-  - src: /portfolio/images/syncfeel_demo.png
-    alt: "Concept illustration of entrainment with out of sync waves coalescing to in-sync waves after a few undulations."
-    caption: "Concept illustration of entrainment"
 ---
 
 #### Overview
