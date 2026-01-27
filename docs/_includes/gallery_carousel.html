@@ -1,0 +1,60 @@
+{% comment %}
+Usage:
+{% include gallery_carousel.html images=page.gallery id="embodied-audio-gallery" %}
+{% endcomment %}
+
+{% assign images = include.images %}
+{% if images and images.size > 0 %}
+  {% assign cid = include.id | default: "portfolioGalleryCarousel" %}
+
+  <div class="portfolio-carousel mt-4">
+    <h3 class="h5 mb-3">More visuals</h3>
+
+    <div id="{{ cid }}" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        {% for img in images %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img
+              src="{{ img.src | relative_url }}"
+              class="d-block w-100"
+              alt="{{ img.alt | default: '' | escape }}"
+              loading="lazy"
+            />
+            {% if img.caption %}
+              <div class="carousel-caption d-none d-md-block">
+                <p class="mb-0">{{ img.caption }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+      </div>
+
+      {% if images.size > 1 %}
+        <button class="carousel-control-prev" type="button" data-bs-target="#{{ cid }}" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#{{ cid }}" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+        <div class="carousel-indicators">
+          {% for img in images %}
+            <button
+              type="button"
+              data-bs-target="#{{ cid }}"
+              data-bs-slide-to="{{ forloop.index0 }}"
+              class="{% if forloop.first %}active{% endif %}"
+              aria-current="{% if forloop.first %}true{% endif %}"
+              aria-label="Slide {{ forloop.index }}"
+            ></button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
