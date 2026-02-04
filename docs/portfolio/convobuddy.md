@@ -9,7 +9,7 @@ category: "Interaction Design"
 preview_image: /portfolio/images/convobuddy_1.png
 preview_alt: "Screenshot of the UI for the intro screen of ConvoBuddy app."
 
-short_description: "Facilitating smooth entry into ongoing conversations is essential for fostering inclusive social interactions, yet it remains one of the most challenging aspects of conversational dynamics. We present ConvoBuddy, a novel conversational assistant designed to support users actively seeking to join existing conversational groups based upon a preliminary need-finding user study and literature review. The aim of ConvoBuddy is to level the playing field when it comes to navigating informal networking and social scenarios for individuals with social difficulties or anxiety. ConvoBuddy leverages smartphone-based sensors to detect conversational group spatial formations in real time and incorporates entry timing and turn-taking management."
+short_description: "Facilitating smooth entry into ongoing conversations is essential for fostering inclusive social interactions, yet it remains one of the most challenging aspects of conversational dynamics. We present ConvoBuddy, a novel conversational assistant designed to support users actively seeking to join existing conversational groups based upon a preliminary need-finding user study and literature review. ConvoBuddy leverages smartphone-based sensors to detect conversational group spatial formations in real time and incorporates entry timing and turn-taking management."
 
 skills:
   - Interaction design
@@ -19,6 +19,9 @@ skills:
   - Human-centered AI
   - Need-finding
 ---
+---
+
+To view the full implementation details please see our original project report [here]('/assets/pdf/convobuddy.pdf').
 
 {% include figure_wrap.html
   src='/portfolio/images/convobuddy_1.png'
@@ -29,36 +32,22 @@ skills:
   col='5'
   class='max-height-20em'
 %}
-
+<br>
 <h4 class="pi-label">Motivation</h4>
 
 Entering an ongoing group conversation is a common yet under-supported social challenge. Individuals often hesitate because they lack context and confidence when joining a group.  These uncertainties compound into social anxiety. Existing social technologies focus on connection before or after interaction (e.g., messaging, conversation facilitation, matchmaking), but offer little support in the moment of embodied social engagement.
 
 ConvoBuddy aims to address this gap by providing real-time, situated assistance at the moment of conversational entry.
-
+<br>
 <h4 class="pi-label">Need-Finding & Research Insights</h4>
 
 To ground the design, we conducted a need-finding survey exploring discomfort, decision factors, and desired technological support for joining group conversations.
-
+<br>
 <h5 class="pi-label">Participants</h5>
 
-- 13 participants (ages 18–54; median 18–24), recruited via social networks and online communities.
-
+* 13 participants (ages 18–54; median 18–24), recruited via social networks and online communities.
+<br>
 <h5 class="pi-label">Key findings</h5>
-
-A majority of participants reported discomfort joining ongoing conversations. Most participants decided whether to join based on:
-
-- topic relevance to their interests or knowledge
-- perceived interruptibility and conversational flow
-
-Participants strongly valued:
-
-- knowing the topic before joining
-- receiving suggestions for what to say
-- cues for when to speak
-
-These findings directly informed ConvoBuddy’s core features: topic summarization, contribution suggestions, and timing cues.
-
 {% include figure_wrap.html
   src='/portfolio/images/convobuddy_bar.png'
   alt='Bar graph showing the preferences of participants valuing the following: topic summarization, contribution suggestions, and timing cues'
@@ -68,20 +57,33 @@ These findings directly informed ConvoBuddy’s core features: topic summarizati
   col='5'
   class='max-height-20em'
 %}
-<br><br><br><br>
+A majority of participants reported discomfort joining ongoing conversations. Most participants decided whether to join based on:
+
+* topic relevance to their interests or knowledge
+* perceived interruptibility and conversational flow
+
+Participants strongly valued:
+
+* knowing the topic before joining
+* receiving suggestions for what to say
+* cues for when to speak
+
+These findings directly informed ConvoBuddy’s core features: topic summarization, contribution suggestions, and timing cues.
+<br>
+
 <h4 class="pi-label">Design Concept</h4>
 
-ConvoBuddy is designed as a shared, opt-in system used by participants at the same event. Each user accesses the system through a mobile web interface, eliminating the need for specialized hardware or installation.
+ConvoBuddy is designed as a shared real-time system used by participants at a co-located  event, especially one involving free-standing dynamic groups such as conferences or networking events. Each user accesses the system through a mobile web interface, eliminating the need for specialized hardware or installation.
 
-The interface is split into two complementary views:
+The interface is mainly comprised of two complementary views:
 
 <h5 class="pi-label">Spatial map view</h5>
 
 Users are represented as points with orientation arrows
 
-- Conversational groups are detected via an f-formation detection algorithm
-- Grouped conversations are color-coded
-- The map reflects the physical layout of the social space
+* Conversational groups are detected via an f-formation detection algorithm
+* Grouped conversations are color-coded
+* The map reflects the physical layout of the social space
 
 {% include figure_wrap.html
   src='/portfolio/images/convobuddy_4.png'
@@ -96,10 +98,10 @@ Users are represented as points with orientation arrows
 
 <h5 class="pi-label">Conversation context view</h5>
 
-- Each detected group is paired with a live topic summary
-- Users can open a group to view a truncated transcript and tips for how to join in
-- Tips for joining were informed by conversational social psychology literature review
-- This design allows users to fluidly move between physical awareness and conversational understanding.
+* Each detected group is paired with a live topic summary
+* Users can open a group to view a truncated transcript and tips for how to join in
+* Tips for joining were informed by conversational social psychology literature review
+* This design allows users to fluidly move between physical awareness and conversational understanding.
 
 <h4 class="pi-label">System Architecture</h4>
 
@@ -107,22 +109,22 @@ ConvoBuddy is implemented as a mobile-friendly web application using a distribut
 
 <h5 class="pi-label">ConvoAnalyser (Flask back-end)</h5>
 
-- Processes phone sensor data (gyroscope, accelerometer)
-- Performs lightweight f-formation detection using proximity and orientation heuristics
-- Groups users into conversational clusters
-- Aggregates speech transcripts per group
-- Calls an external LLM to generate topic summaries and curated conversational entry suggestions
+* Processes phone sensor data (gyroscope, accelerometer)
+* Performs lightweight f-formation detection (group conversational formations) using proximity and orientation heuristics
+* Groups users into conversational clusters
+* Aggregates speech transcripts per group
+* Calls an external LLM to generate topic summaries and curated conversational entry strategies and suggestions
 
 <h5 class="pi-label">Real-Time Interaction Layer (Node.js)</h5>
 
 The client-side Node.js application is responsible for:
 
-- Collecting sensor and speech data from mobile devices
-- Mapping speakers to relative spatial positions
-- Rendering conversational clusters in real time
-- Color-coding groups for visual correlation
-- Detecting conversational pauses using a silence/noise threshold
-- Displaying summaries, transcripts, and entry tips
+* Collecting sensor and speech data from mobile devices
+* Mapping speakers to relative spatial positions
+* Rendering conversational clusters in real time
+* Color-coding groups for visual correlation
+* Detecting conversational pauses using a silence/noise threshold
+* Displaying summaries, transcripts, and entry tips
 
 <h4 class="pi-label">Outcome & Recognition</h4>
 

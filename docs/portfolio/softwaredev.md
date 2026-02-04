@@ -26,6 +26,8 @@ gallery:
     alt: "Chicago bean picture"
     description: "Chicago bean."
 ---
+---
+
 #### What I Did
   At RedMane Technology, I served as a lead full-stack developer on public-sector eligibility, enrollment, and case management platforms supporting government healthcare and social benefits programs across the United States and Canada, including the proprietary case management platform, mCase. The mCase platform was a core driver of RedMane’s delivery and services revenue during my tenure. I worked on both new implementations and long-term maintenance for active clients, contributing to systems that were central to the company’s public-sector healthcare and human services portfolio.
 

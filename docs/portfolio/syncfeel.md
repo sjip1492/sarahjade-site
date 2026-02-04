@@ -9,156 +9,91 @@ category: "Haptic Interaction"
 preview_image: /portfolio/images/syncfeel_img.jpg
 preview_alt: "Wearable bracelet delivering vibration, light, and thermal stimulation"
 
-short_description: "A wearable platform exploring how synchronized vibration, light, and thermal cues can support focus and restorative attention through personalized rhythmic stimulation."
+short_description: "SyncFeel is a wearable device and platform for exploring how multi-modal rhythmic stimulation (combining vibration, light, and thermal cues) can support attention regulation and cognitive state transitions. The system is designed as a personalizable wearable, allowing users to explore how different rhythmic patterns influence focus, calm, and attentional reset. SyncFeel proposes attention-focused wearables as exploratory systems, where users actively shape and discover what works for their own bodies and contexts."
 
 skills:
   - Interaction Design
-  - Wearable Prototyping
-  - Human-Centered AI
-  - Multimodal Interfaces
-  - Research Prototyping
+  - Wearables 
+  - Prototyping
   - Cognitive Systems Design
+  - Brain-Computer Interfaces
+---
 ---
 
-#### Overview
+{% include figure_wrap.html
+  src='portfolio/images/syncfeel_img.jpg'
+  alt=''
+  title='UI Screenshot'
+  caption='fffff.'
+  align='right'
+  col='5'
+  class='max-height-20em'
+%}
 
-SyncFeel is a wearable research platform for exploring how multi-modal rhythmic stimulation—combining vibration, light, and thermal cues—can support attention regulation and cognitive state transitions. The system is designed as a fully untethered, personalizable wearable, allowing users to explore how different rhythmic patterns influence focus, calm, and attentional reset.
-
-Rather than prescribing a single “optimal” pattern, SyncFeel reframes attention wearables as exploratory systems, where users actively shape and discover what works for their own bodies and contexts.
-
-#### Motivation
+<h4 class="pi-label">Motivation</h4>
 
 Sustaining attention has become increasingly difficult for students, knowledge workers, and creatives operating in interruption-heavy environments. While many productivity tools attempt to manage attention at the software level (e.g., blocking notifications), attention itself is fundamentally embodied and biological.
 
-A growing body of work demonstrates that rhythmic sensory stimulation—across haptic, visual, and auditory modalities—can modulate cognition through mechanisms such as neural entrainment and autonomic regulation. However, most existing systems:
+A [growing body of work](https://www.media.mit.edu/publications/improving-attention-using-wearables-via-haptic-and-multimodal-rhythmic-stimuli-1/) demonstrates that rhythmic sensory stimulation across haptic, visual, and auditory modalities can modulate cognition through mechanisms such as <strong>neural entrainment</strong> and autonomic regulation. However, most existing systems:
 
-focus on a single modality (often vibration or sound),
-require tethered lab setups, or
-present fixed, non-customizable stimulation patterns.
+* focus on a single modality (often vibration or sound),
+* require tethered lab setups, or
+* present fixed, non-customizable stimulation patterns.
 
 SyncFeel addresses this gap by introducing:
 
-Thermal stimulation as a first-class interaction modality for attention support, and
+* Thermal stimulation as an interaction modality for attention support, and
+* A user-facing system that supports personal adaptation and experimentation.
 
-A user-facing system that supports personalization and experimentation.
+With the help of [DataFeel Dots](https://www.datafeel.com/), SyncFeel applies prior research findings in haptic HCI and extends it to new haptic capabilities and an exploratory platform.
 
-#### Design Concept
+<h4 class="pi-label">Design Concept</h4>
 
 SyncFeel takes the form of a minimalist two-Dot wearable bracelet, driven by a single controller and paired with a lightweight companion application.
 
 Each Dot delivers:
 
-Vibration (for rhythmic entrainment),
+* Vibration (for rhythmic entrainment),
+* Light (for visual reinforcement of rhythm), and
+* Rapid heating and cooling (for arousal modulation and restorative cues).
 
-Light (for visual reinforcement of rhythm), and
+The system is intentionally designed to be quiet and lightweight, suitable for study sessions at home or in a shared workspace.
 
-Rapid heating and cooling (for arousal modulation and restorative cues).
-
-The system is intentionally designed to be:
-
-Silent (no auditory output),
-
-Private (experienced only by the wearer), and
-
-Low-friction (no external hardware, no lab infrastructure).
-
-This makes SyncFeel suitable for everyday contexts such as studying, creative work, classrooms, or short restorative breaks.
-
-#### Presets & Use Cases
+{% include figure_wrap.html
+  src='portfolio/images/syncfeel_img.png'
+  alt=''
+  title='UI Screenshot'
+  caption='fffff.'
+  align='right'
+  col='5'
+  class='max-height-20em'
+%}
+<h4 class="pi-label">Presets & Use Cases</h4>
 
 To ground the system in research while enabling exploration, we demonstrate SyncFeel using two research-informed presets that act as starting points rather than prescriptions.
 
-Deep Focus (Beta Entrainment)
+<h5 class="pi-label">Deep Focus (Beta Entrainment)</h5>
 
-The Beta Focus preset is designed to support sustained attention during cognitively demanding tasks.
+The Beta Focus preset is designed to support sustained attention during cognitively demanding tasks. Tactile haptic bursts, LED colors, and temperature micro-pulses are calibrated to correspond to beta wave entrainment.
 
-20 Hz vibrotactile burst trains at regular intervals
+<strong>Use case:</strong> During a 25-minute Pomodoro-style work session, the wearer activates Beta Focus. The cues are subtle and non-distracting, providing rhythmic scaffolding for concentration without adding sound or visual clutter.
 
-Cool-white LED micro-flickers to reinforce alertness
-
-Periodic cooling micro-pulses to counter vigilance drops
-
-Use case:
-During a 25-minute Pomodoro-style work session, the wearer activates Beta Focus. The cues are subtle and non-distracting, providing rhythmic scaffolding for concentration without adding sound or visual clutter.
-
-Attention Reset (Alpha Entrainment)
+<h5 class="pi-label">Attention Reset (Alpha Entrainment)</h5>
 
 The Attention Reset preset supports transitions from mental fatigue back to calm readiness.
+<strong>Use case:</strong> Between tasks or after disruption, a three-minute reset sequence helps guide the wearer into a calmer, more receptive state, useful for classrooms, creative practice, or before returning to focused work.
 
-8 Hz vibrotactile pulses
+<h4 class="pi-label">User Personalization</h4>
 
-Warm–cool thermal breathing waves (warm on inhale, cool on exhale)
-
-Soft amber LED fades
-
-Use case:
-Between tasks or after disruption, a three-minute reset sequence helps guide the wearer into a calmer, more receptive state—useful in classrooms, creative practice, or before returning to focused work.
-
-#### User Personalization
-
-A central contribution of SyncFeel is its companion application, which allows users to:
-
-Modify existing presets,
-
-Adjust rhythms, intensities, and modalities, or
-
-Create entirely new stimulation patterns from scratch.
+A central contribution of SyncFeel is its companion application, which allows users to modify existing presets adjust rhythms, intensities, and modalities, or create entirely new stimulation patterns from scratch.
 
 This design choice reflects the insight that effective sensory patterns vary widely between individuals. Rather than optimizing for an “average user,” SyncFeel treats personalization as essential infrastructure for meaningful engagement.
 
-The system thus becomes a platform for self-discovery, not merely an attention aid.
-
-Technical Approach
-Hardware
-
-DataFeel Dots (×2):
-Positioned to balance vibrotactile sensitivity and thermal comfort.
-
-El Jefe Controller:
-Bluetooth-enabled, forearm-mounted controller with swappable batteries for untethered operation.
-
-Wearable form factor:
-Wrist straps and 3D-printed shells adapted from DataFeel’s hardware ecosystem.
-
-Software
-
-A companion application serves as the rhythm engine, handling:
-
-Pattern timing,
-
-Multi-modal synchronization, and
-
-Wireless communication with the controller.
-
-The architecture is designed to support future closed-loop extensions, such as:
-
-EEG-based adaptation,
-
-Eye-tracking feedback, or
-
-Physiological sensing.
-
-Research Contributions
-
-SyncFeel contributes to HCI and interaction design in three key ways:
-
-Thermal stimulation as an interaction modality
-Introduces rapid heating and cooling alongside vibration and light in a wearable attention system.
-
-Untethered, field-ready research platform
-Translates lab-based entrainment concepts into a fully wearable, everyday system.
-
-User-driven exploration of cognitive states
-Shifts attention wearables from fixed interventions to customizable, exploratory tools.
-
-Future Directions
-
-SyncFeel is intentionally designed as an open-ended research system. Future work includes:
-
-Integrating real-time bio-signals (e.g., consumer EEG or eye tracking) for closed-loop adaptation
-
-Studying long-term user appropriation and pattern evolution
-
-Exploring social or group-based rhythmic synchronization without audio
+<h4 class="pi-label">Outcomes</h4>
 
 Evaluating SyncFeel in real-world learning and creative contexts
+
+This project was presented at UIST Student Innovation Competition 2025 in Busan, Korea. Please see the extended abstract published in UIST Adjunct '25: Adjunct Proceedings [here](https://dl.acm.org/doi/10.1145/3746058.3758974). We are currently exploring opportunities in the commercial space for this product.
+
+<h4 class="pi-label">Ongoing Work with Datafeel</h4>
+The project is currently undergoing further development to integrate bio-signals in collaboration with DataFeel Technologies. Further details are available upon request.
