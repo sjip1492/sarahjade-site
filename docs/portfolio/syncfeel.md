@@ -23,8 +23,8 @@ skills:
 {% include figure_wrap.html
   src='portfolio/images/syncfeel_img.jpg'
   alt=''
-  title='UI Screenshot'
-  caption='fffff.'
+  title='Form factor'
+  caption='Photograph of the designed solution being used during a work session.'
   align='right'
   col='5'
   class='max-height-20em'
@@ -62,8 +62,8 @@ The system is intentionally designed to be quiet and lightweight, suitable for s
 {% include figure_wrap.html
   src='portfolio/images/syncfeel_img.png'
   alt=''
-  title='UI Screenshot'
-  caption='fffff.'
+  title='Concept for a wireless solution'
+  caption='Further work will explore usability and marketability in this area.'
   align='right'
   col='5'
   class='max-height-20em'
