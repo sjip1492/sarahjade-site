@@ -10,7 +10,7 @@ My interests sit at the intersection of tangible interfaces and socially informe
 I’m currently pursuing an MSc at Simon Fraser University in Vancouver, BC, where I work in [Tangent Lab](https://tangent.cs.sfu.ca/) under the supervision of Dr. Lawrence Kim. At Tangent Lab, my work explores tangible user interfaces through embodied and robotic interaction, tangible sound, and haptic systems.
 
 
-Outside of research, I spend my time [running](https://www.strava.com/athletes/83225582), [planning events](https://partiful.com/u/25JZEmFI1zVMCxACeCTnVApIi2n1), [springboard diving](https://www.instagram.com/stories/highlights/17936985444144244/), [sewing](https://www.instagram.com/stories/highlights/17896453761391162/), [making electronic music](https://soundcloud.com/leisurenoise), [cooking](https://www.instagram.com/wholefoodshotfoodsection/), and [reading](https://www.goodreads.com/user/show/198026446-sarah-jade).
+Outside of research, I spend my time [running](https://www.strava.com/athletes/83225582), [planning events](https://partiful.com/u/25JZEmFI1zVMCxACeCTnVApIi2n1), springboard diving, sewing, [making electronic music](https://soundcloud.com/leisurenoise), [cooking](https://www.instagram.com/wholefoodshotfoodsection/), and [reading](https://www.goodreads.com/user/show/198026446-sarah-jade).
 
 <p>Here is what I am reading currently:</p>
 
