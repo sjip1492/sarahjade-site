@@ -76,28 +76,39 @@
   {% if page.gallery %} {% include gallery_carousel.html
   images=page.gallery id=page.slug %} {% endif %}
 
-  <!-- NAV: Back + Next -->
-  {%- assign portfolio_pages = site.pages | where_exp: "p", "p.tags contains
-  'portfolio'" | where_exp: "p", "p.url contains '/portfolio/'" | sort: "date"
-  -%} {%- assign next_item = nil -%} {%- for p in portfolio_pages -%} {%- if
-  p.url == page.url -%} {%- assign idx = forloop.index0 -%} {%- assign
-  next_index = idx | plus: 1 -%} {%- if next_index < portfolio_pages.size -%}
-  {%- assign next_item = portfolio_pages[next_index] -%} {%- endif -%} {%- endif
-  -%} {%- endfor -%}
+  <!-- NAV: Back · Prev · Next -->
+  {%- assign portfolio_pages = site.pages | where_exp: "p", "p.tags contains 'portfolio'" | where_exp: "p", "p.url contains '/portfolio/'" | sort: "date" -%}
+  {%- assign next_item = nil -%}
+  {%- assign prev_item = nil -%}
+  {%- for p in portfolio_pages -%}
+    {%- if p.url == page.url -%}
+      {%- assign cur_idx = forloop.index0 -%}
+      {%- assign next_idx = cur_idx | plus: 1 -%}
+      {%- if next_idx < portfolio_pages.size -%}
+        {%- assign next_item = portfolio_pages[next_idx] -%}
+      {%- endif -%}
+      {%- if cur_idx > 0 -%}
+        {%- assign prev_idx = cur_idx | minus: 1 -%}
+        {%- assign prev_item = portfolio_pages[prev_idx] -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
 
   <div class="pi-nav">
-    {% if next_item %}
-    <a class="btn pjax-link" href="{{ next_item.url }}"
-      >Next Portfolio Item →</a
-    >
-    {% else %}
-    <!-- If this is the newest/last chronologically, loop to the first (optional) -->
-    {%- assign first_item = portfolio_pages[0] -%} {% if first_item and
-    first_item.url != page.url %}
-    <a class="btn pjax-link" href="{{ first_item.url }}"
-      >Next Portfolio Item →</a
-    >
-    {% endif %} {% endif %}
+    <a class="btn pi-nav-back" href="/portfolio">← Portfolio</a>
+    <div class="pi-nav-arrows">
+      {%- if prev_item -%}
+      <a class="btn" href="{{ prev_item.url }}">← {{ prev_item.title }}</a>
+      {%- endif -%}
+      {%- if next_item -%}
+      <a class="btn" href="{{ next_item.url }}">{{ next_item.title }} →</a>
+      {%- else -%}
+        {%- assign first_item = portfolio_pages[0] -%}
+        {%- if first_item and first_item.url != page.url -%}
+        <a class="btn" href="{{ first_item.url }}">{{ first_item.title }} →</a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
   </div>
 </div>
 

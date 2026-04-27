@@ -5,7 +5,7 @@ layout: content-post
   <div class="portfolio-container rounded">
     <div class="portfolio-header">
       {% if page.description %}
-        <p style="margin: 0; opacity: 0.85">{{ page.description }}</p>
+        <p class="portfolio-header-desc">{{ page.description }}</p>
       {% endif %}
     </div>
 
@@ -14,7 +14,7 @@ layout: content-post
     "date" | reverse -%}
     <div class="portfolio-grid">
       {%- for item in portfolio_pages -%}
-      <a class="portfolio-card" href="javascript:void(0);" onclick="loadContent('{{ item.url }}')">
+      <a class="portfolio-card" href="{{ item.url }}">
         {%- if item.preview_image -%}
         <img
           class="portfolio-thumb"
@@ -30,6 +30,9 @@ layout: content-post
           <p class="portfolio-title"><b>{{ item.title }}</b></p>
           {%- if item.subtitle -%}
           <p class="portfolio-subtitle">{{ item.subtitle }}</p>
+          {%- endif -%}
+          {%- if item.short_description -%}
+          <p class="portfolio-desc">{{ item.short_description | truncatewords: 20 }}</p>
           {%- endif -%}
           <div class="portfolio-meta">
             {%- if item.date -%}<span

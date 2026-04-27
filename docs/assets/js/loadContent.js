@@ -1,7 +1,7 @@
 /**
  * Unified content loader for both AJAX and PJAX navigation.
  * Fetches content from a URL and updates the #content element.
- * 
+ *
  * @param {string} url - URL to fetch content from
  * @param {Object} options - Configuration options
  * @param {boolean} options.updateTitle - Whether to update document title (default: false)
@@ -17,7 +17,6 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
   }
 
   try {
-    // Add loading hint
     contentEl.style.opacity = '0.6';
 
     const response = await fetch(url, {
@@ -31,10 +30,9 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
 
     const html = await response.text();
 
-    // Extract content from full HTML if needed
+    // Extract #content from a full HTML document, otherwise use the raw partial
     let contentToInsert = html;
     if (html.includes('</html>')) {
-      // Full HTML document; extract #content
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const nextContent = doc.querySelector('#content');
       if (nextContent) {
@@ -45,23 +43,19 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
       }
     }
 
-    // Update content
     contentEl.innerHTML = contentToInsert;
     contentEl.style.opacity = '1';
 
-    // Update history if requested
     if (updateHistory) {
       history.pushState({ url }, '', url);
     }
 
-    // Re-initialize animations on newly injected content
     if (window.initBlurWipe) {
       window.initBlurWipe(contentEl);
     }
 
-    // Handle sidebar visibility
-  const inferredHide = hideSidebars || shouldHideSidebarsForUrl(url);
-  toggleSidebars(!inferredHide);
+    const inferredHide = hideSidebars || shouldHideSidebarsForUrl(url);
+    toggleSidebars(!inferredHide);
   } catch (error) {
     console.error('Failed to load content:', error);
     contentEl.innerHTML = '<p>Error loading content. Please try again.</p>';
@@ -70,12 +64,10 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
 }
 
 /**
- * Toggle visibility of sidebar navigation and back button.
- * When showing sidebars, hides the back button and shows nav buttons.
- * When hiding sidebars, shows the back button and hides nav buttons.
- * Also adjusts central pane width to fill space when sidebars are hidden.
- * 
- * @param {boolean} show - Whether to show sidebars (true = show nav buttons, false = show back button)
+ * Toggle visibility of sidebar navigation.
+ * Expands the central column to full width when sidebars are hidden.
+ *
+ * @param {boolean} show - true = show sidebars, false = hide and expand centre
  */
 function toggleSidebars(show) {
   const contentEl = document.getElementById('content');
@@ -86,28 +78,15 @@ function toggleSidebars(show) {
 
   const sideCols = row.querySelectorAll(':scope > .col-md-3');
   const centralCol = row.querySelector(':scope > .col-md-6, :scope > .col-md-12');
-  const backBtn = document.getElementById('back-button');
 
   if (show) {
-    // Show sidebars
     sideCols.forEach(col => (col.style.display = ''));
-
-    // Hide back button
-    if (backBtn) backBtn.style.display = 'none';
-
-    // Restore central column width
     if (centralCol) {
       centralCol.classList.remove('col-md-12');
       centralCol.classList.add('col-md-6');
     }
   } else {
-    // Hide sidebars
     sideCols.forEach(col => (col.style.display = 'none'));
-
-    // Show back button
-    if (backBtn) backBtn.style.display = '';
-
-    // Expand central column
     if (centralCol) {
       centralCol.classList.remove('col-md-6');
       centralCol.classList.add('col-md-12');
@@ -115,59 +94,54 @@ function toggleSidebars(show) {
   }
 }
 
-
 /**
- * Legacy AJAX loader for sidebar buttons. Supports both partials and full pages.
- * Now delegates to unified loadContentFromUrl.
- * 
- * @param {string} section - Section name or URL to load
+ * Sidebar button loader. Handles named sections and direct URL paths.
+ * All navigation pushes a history state so browser back/forward works.
+ *
+ * @param {string} section - Section name ('', 'news', 'cv', …) or a URL path
  */
 function loadContent(section) {
-  const knownSections = ['bio', 'news', 'cv', 'contact','portfolio', 'portfolio_item', 'news_index'];
-  const mainSections = ['bio', 'news', 'cv', 'contact', 'portfolio', 'news_index'];
-  
-  // Check if it's a known partial or a direct URL
+  // Empty string or 'bio' both mean the home/bio page
+  if (section === '' || section === 'bio') {
+    loadContentFromUrl('/', { updateTitle: true, updateHistory: true, hideSidebars: false });
+    return;
+  }
+
+  const knownSections = ['news', 'cv', 'contact', 'portfolio', 'portfolio_item', 'news_index'];
+  const mainSections  = ['news', 'cv', 'contact', 'portfolio', 'news_index'];
+
   if (knownSections.includes(section)) {
-    // Known partial; load from section path
-    // Portfolio items: hide sidebars and don't update URL
     const isPortfolioItem = !mainSections.includes(section);
-    loadContentFromUrl(`/${section}`, { 
-      updateTitle: false,
-      updateHistory: false,
-      hideSidebars: isPortfolioItem
+    loadContentFromUrl(`/${section}`, {
+      updateTitle:   true,
+      updateHistory: true,
+      hideSidebars:  isPortfolioItem,
     });
   } else if (section.startsWith('/') || section.includes('.')) {
-    // Direct URL (e.g., /portfolio/upaies.html or /portfolio/upaies)
-    // Treat as portfolio item
-    loadContentFromUrl(section, { 
-      updateTitle: false,
-      updateHistory: false,
-      hideSidebars: true
+    // Direct URL path — treat as a portfolio item
+    loadContentFromUrl(section, {
+      updateTitle:   true,
+      updateHistory: true,
+      hideSidebars:  true,
     });
   } else {
-    // External link; full navigation
+    // External URL — full navigation
     window.location.href = section;
   }
-  
 }
 
 /**
- * PJAX: Intercept internal link clicks and handle back/forward navigation.
- * This enables smooth navigation without full page reloads.
+ * PJAX: intercept internal link clicks and handle browser back/forward.
  */
 (function () {
   function isInternalLink(a) {
     if (!a || !a.getAttribute) return false;
-    const href = a.getAttribute("href");
+    const href = a.getAttribute('href');
     if (!href) return false;
-
-    // Ignore anchors, mailto, tel, downloads, and new tabs
-    if (href.startsWith("#")) return false;
-    if (href.startsWith("mailto:") || href.startsWith("tel:")) return false;
-    if (a.hasAttribute("download")) return false;
-    if (a.target && a.target !== "_self") return false;
-
-    // Only same-origin
+    if (href.startsWith('#')) return false;
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
+    if (a.hasAttribute('download')) return false;
+    if (a.target && a.target !== '_self') return false;
     try {
       const url = new URL(href, window.location.origin);
       return url.origin === window.location.origin;
@@ -176,41 +150,34 @@ function loadContent(section) {
     }
   }
 
-  // Intercept clicks on internal links
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if (!a) return;
-
-    if (!isInternalLink(a)) return;
-
-    // Respect modified clicks (open in new tab, etc.)
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a || !isInternalLink(a)) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();
     const url = new URL(a.href, window.location.origin).toString();
-    
-    // Load with history update
     const hideSidebars = shouldHideSidebarsForUrl(url);
     loadContentFromUrl(url, { updateTitle: true, updateHistory: true, hideSidebars }).catch(() => {
       window.location.href = a.href;
     });
   });
 
-  // Handle back/forward navigation
-  window.addEventListener("popstate", (e) => {
+  window.addEventListener('popstate', (e) => {
     const url = (e.state && e.state.url) ? e.state.url : window.location.href;
-    // Load without pushing to history (popstate already handled it)
     const hideSidebars = shouldHideSidebarsForUrl(url);
-    loadContentFromUrl(url, { updateTitle: true, updateHistory: false, hideSidebars })
-    .catch(() => {
+    loadContentFromUrl(url, { updateTitle: true, updateHistory: false, hideSidebars }).catch(() => {
       window.location.href = url;
     });
   });
+
+  // Record the initial page load so the first back-press can restore it
+  history.replaceState({ url: window.location.href }, '', window.location.href);
 })();
+
 function shouldHideSidebarsForUrl(urlString) {
   const u = new URL(urlString, window.location.origin);
-  const path = u.pathname.replace(/\/+$/, ''); // trim trailing slash
-
-  // Hide sidebars for portfolio *items*, but not the portfolio index
+  const path = u.pathname.replace(/\/+$/, '');
+  // Hide sidebars for portfolio items, but not the portfolio index itself
   return path.startsWith('/portfolio') && path !== '/portfolio';
 }

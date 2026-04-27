@@ -316,3 +316,41 @@ a:hover {
   clip-path: circle(58%);
   max-height: 22em;
 }
+
+/* ==========================================================================
+   CV PAGE
+   ========================================================================== */
+
+.cv-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.cv-action-btn {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.cv-viewer-wrap {
+  width: 100%;
+}
+
+.cv-object {
+  display: block;
+  width: 100%;
+  height: 700px;
+  border: none;
+  border-radius: 8px;
+}
+
+.cv-fallback {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
