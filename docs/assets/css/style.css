@@ -295,26 +295,27 @@ a:hover {
 }
 
 .bio-photo {
-  float: right;              /* or left */
-  width: 220px;              /* control size */
-  margin: 0 0 1rem 1.5rem;   /* spacing from text */
+  float: right;
+  width: 220px;
+  margin: 0 0 1rem 1.5rem;
   border-radius: 12px;
+  shape-outside: circle(58%);
+  clip-path: circle(58%);
+  max-height: 22em;
 }
 
-/* Mobile: stack instead of wrap */
 @media (max-width: 768px) {
   .bio-photo {
     float: none;
     display: block;
     margin: 0 auto 1rem auto;
     width: 70%;
+    max-height: none;
+    /* clip-path creates a stacking context that causes Safari to paint the
+       image above text; shape-outside has no effect without float anyway */
+    clip-path: none;
+    shape-outside: none;
   }
-}
-.bio-photo {
-  float: right;
-  shape-outside: circle(58%);
-  clip-path: circle(58%);
-  max-height: 22em;
 }
 
 /* ==========================================================================
