@@ -1,0 +1,7 @@
+---
+layout: content-post
+title: "Paper & Reviewer — Western Canada Conference on Computing Education 2026"
+date: 2026-04-30
+tag: news
+---
+Paper accepted to WCCCE 2026: *Evaluating Consistency and Variability in Student Writing Assessment by Humans and Artificial Intelligence in a Computing Science Course*. Also served as a reviewer for the conference.
