@@ -175,6 +175,19 @@ function loadContent(section) {
   history.replaceState({ url: window.location.href }, '', window.location.href);
 })();
 
+// Lock sidebar columns to their initial rendered height so buttons never grow
+// or shrink as the central content panel changes. align-self: flex-start opts
+// each sidebar out of the row's align-items: stretch so the central column
+// can still change height freely.
+window.addEventListener('load', () => {
+  const sidebars = document.querySelectorAll('.row.d-flex-nimp > .col-md-3');
+  sidebars.forEach(col => {
+    const h = col.getBoundingClientRect().height;
+    col.style.height    = h + 'px';
+    col.style.alignSelf = 'flex-start';
+  });
+});
+
 function shouldHideSidebarsForUrl(urlString) {
   const u = new URL(urlString, window.location.origin);
   const path = u.pathname.replace(/\/+$/, '');
