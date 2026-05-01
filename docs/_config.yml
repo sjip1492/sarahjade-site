@@ -9,7 +9,7 @@ twitter_username: sarahjip
 github_username:  sjip1492
 linkedin_username:  sarah-jade-pratt
 soundcloud_username: leisurenoise
-footer-credit: "This website was built with love by hand by me."
+# footer-credit: "This website was built with love."
 
 # Build settings
 markdown: kramdown
