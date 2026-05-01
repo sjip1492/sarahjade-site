@@ -355,3 +355,99 @@ a:hover {
   font-size: 0.85rem;
   opacity: 0.7;
 }
+
+/* ==========================================================================
+   MOBILE LAYOUT — bottom nav strip
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+  /* Slide transition for swipe navigation */
+  #content {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #content.slide-out-left {
+    transform: translateX(-40%);
+    opacity: 0;
+  }
+
+  #content.slide-out-right {
+    transform: translateX(40%);
+    opacity: 0;
+  }
+
+  /* These classes set the starting position instantly (transition: none),
+     then are removed so the element transitions back to its default state */
+  #content.slide-in-from-right {
+    transform: translateX(40%);
+    opacity: 0;
+    transition: none;
+  }
+
+  #content.slide-in-from-left {
+    transform: translateX(-40%);
+    opacity: 0;
+    transition: none;
+  }
+
+  /* Allow row to wrap: content on top, both sidebars below.
+     z-index: 1 ensures the row paints above the fixed anthurium (z-index: 0). */
+  .row.d-flex-nimp {
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content takes full width, sits above nav strip, clips slide overflow */
+  .row.d-flex-nimp > .col-md-6 {
+    order: 1;
+    flex: 0 0 100% !important;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Both sidebars share the bottom row, laid out horizontally.
+     Outer edges get 15px padding to match the centre pane's gutter. */
+  .row.d-flex-nimp > .col-md-3 {
+    order: 2;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    padding: 0;
+  }
+
+  /* Left sidebar (Bio, CV, News — 3 buttons) gets 3 flex units */
+  .row.d-flex-nimp > .col-md-3:first-child {
+    flex: 3 0 0% !important;
+    padding-left: 15px;
+  }
+
+  /* Right sidebar (Contact, Portfolio — 2 buttons) gets 2 flex units */
+  .row.d-flex-nimp > .col-md-3:last-child {
+    flex: 2 0 0% !important;
+    padding-right: 15px;
+  }
+
+  /* Buttons: auto height, equal share of sidebar width, no bottom margin */
+  .row.d-flex-nimp > .col-md-3 .btn {
+    flex: 1;
+    width: auto !important;
+    height: auto !important;
+    min-height: 44px;
+    margin-bottom: 0 !important;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.2rem;
+  }
+
+  /* Anthurium: smaller and behind the content/nav row */
+  .signature-icon {
+    max-height: 80px;
+  }
+
+  /* Footer credit overlaps the bottom nav strip on mobile — hide it */
+  .footer-credit {
+    display: none;
+  }
+}

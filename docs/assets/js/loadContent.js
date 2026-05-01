@@ -1,3 +1,5 @@
+const SLIDE_MS = 300; // must match CSS transition duration
+
 /**
  * Unified content loader for both AJAX and PJAX navigation.
  * Fetches content from a URL and updates the #content element.
@@ -7,9 +9,10 @@
  * @param {boolean} options.updateTitle - Whether to update document title (default: false)
  * @param {boolean} options.updateHistory - Whether to push to history state (default: false)
  * @param {boolean} options.hideSidebars - Whether to hide sidebar navigation (default: false)
+ * @param {string|null} options.slideDirection - 'left' or 'right' for slide animation (default: null)
  * @returns {Promise<void>}
  */
-async function loadContentFromUrl(url, { updateTitle = false, updateHistory = false, hideSidebars = false } = {}) {
+async function loadContentFromUrl(url, { updateTitle = false, updateHistory = false, hideSidebars = false, slideDirection = null } = {}) {
   const contentEl = document.getElementById('content');
   if (!contentEl) {
     console.error('Content element not found');
@@ -17,7 +20,14 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
   }
 
   try {
-    contentEl.style.opacity = '0.6';
+    // Start slide-out and fetch concurrently so animation doesn't add latency
+    let animDone = null;
+    if (slideDirection) {
+      contentEl.classList.add(slideDirection === 'left' ? 'slide-out-left' : 'slide-out-right');
+      animDone = new Promise(r => setTimeout(r, SLIDE_MS));
+    } else {
+      contentEl.style.opacity = '0.6';
+    }
 
     const response = await fetch(url, {
       headers: { 'X-Requested-With': 'fetch' },
@@ -43,8 +53,24 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
       }
     }
 
+    // Wait for slide-out to finish before swapping content
+    if (animDone) await animDone;
+
+    contentEl.classList.remove('slide-out-left', 'slide-out-right');
     contentEl.innerHTML = contentToInsert;
-    contentEl.style.opacity = '1';
+
+    if (slideDirection) {
+      // Instantly position new content off-screen on the opposite side,
+      // then remove the class so the CSS transition carries it to center.
+      const inClass = slideDirection === 'left' ? 'slide-in-from-right' : 'slide-in-from-left';
+      contentEl.classList.add(inClass);
+      void contentEl.offsetWidth; // force reflow so initial position is painted
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        contentEl.classList.remove(inClass);
+      }));
+    } else {
+      contentEl.style.opacity = '1';
+    }
 
     if (updateHistory) {
       history.pushState({ url }, '', url);
@@ -58,6 +84,7 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
     toggleSidebars(!inferredHide);
   } catch (error) {
     console.error('Failed to load content:', error);
+    contentEl.classList.remove('slide-out-left', 'slide-out-right', 'slide-in-from-right', 'slide-in-from-left');
     contentEl.innerHTML = '<p>Error loading content. Please try again.</p>';
     contentEl.style.opacity = '1';
   }
@@ -70,6 +97,7 @@ async function loadContentFromUrl(url, { updateTitle = false, updateHistory = fa
  * @param {boolean} show - true = show sidebars, false = hide and expand centre
  */
 function toggleSidebars(show) {
+  if (window.innerWidth <= 768) return; // mobile uses CSS bottom strip
   const contentEl = document.getElementById('content');
   if (!contentEl) return;
 
@@ -180,6 +208,7 @@ function loadContent(section) {
 // each sidebar out of the row's align-items: stretch so the central column
 // can still change height freely.
 window.addEventListener('load', () => {
+  if (window.innerWidth <= 768) return; // no height lock on mobile
   const sidebars = document.querySelectorAll('.row.d-flex-nimp > .col-md-3');
   sidebars.forEach(col => {
     const h = col.getBoundingClientRect().height;
@@ -194,3 +223,49 @@ function shouldHideSidebarsForUrl(urlString) {
   // Hide sidebars for portfolio items, but not the portfolio index itself
   return path.startsWith('/portfolio') && path !== '/portfolio';
 }
+
+/**
+ * Mobile swipe navigation: swipe left/right on #content to move between sections.
+ */
+(function () {
+  const SECTIONS = ['', 'cv', 'news', 'contact', 'portfolio'];
+
+  function currentSectionIndex() {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    for (let i = 0; i < SECTIONS.length; i++) {
+      const expected = SECTIONS[i] === '' ? '/' : '/' + SECTIONS[i];
+      if (path === expected) return i;
+    }
+    return -1;
+  }
+
+  let sx = 0, sy = 0;
+
+  document.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (window.innerWidth > 768) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    // Require a clear horizontal swipe (50px min, must dominate vertical)
+    if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return;
+
+    const idx = currentSectionIndex();
+    if (idx === -1) return;
+
+    const goLeft = dx < 0; // swipe left → advance to next section
+    const next = idx + (goLeft ? 1 : -1);
+    if (next < 0 || next >= SECTIONS.length) return;
+
+    const targetUrl = '/' + (SECTIONS[next] || '');
+    loadContentFromUrl(targetUrl, {
+      updateTitle: true,
+      updateHistory: true,
+      hideSidebars: false,
+      slideDirection: goLeft ? 'left' : 'right',
+    });
+  }, { passive: true });
+})();
