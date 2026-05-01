@@ -1,7 +1,7 @@
 ---
 layout: content-post
-title: "Began ixLab meeting series"
+title: "Began ixLab meeting series as Program Chair"
 date:  2026-01-15
 tag: news
 ---
-Kicked off the ixLab group collective meetings with a goal-setting and sharing workshop.
+Kicked off the ixLab group collective meetings for the term, serving as Program Chair for the HCI labs consortium at SFU.

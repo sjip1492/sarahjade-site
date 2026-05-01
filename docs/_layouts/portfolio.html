@@ -31,9 +31,9 @@ layout: content-post
           {%- if item.subtitle -%}
           <p class="portfolio-subtitle">{{ item.subtitle }}</p>
           {%- endif -%}
-          {%- if item.short_description -%}
-          <p class="portfolio-desc">{{ item.short_description | truncatewords: 20 }}</p>
-          {%- endif -%}
+          <!-- {%- if item.short_description -%} -->
+          <!-- <p class="portfolio-desc">{{ item.short_description | truncatewords: 20 }}</p> -->
+          <!-- {%- endif -%} -->
           <div class="portfolio-meta">
             {%- if item.date -%}<span
               >{{ item.date | date: "%b %-d, %Y" }}</span

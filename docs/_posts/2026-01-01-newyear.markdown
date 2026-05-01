@@ -1,7 +1,7 @@
 ---
 layout: content-post
-title: "Began new project"
+title: "Began new project, welcoming two new undergraduate mentees"
 date:  2026-01-01
 tag: news
 ---
-Welcomed two new students to the project and began the process of an evaluation study to complete our submission to UIST 2026.
+Welcomed two new students to the project and began the process of an evaluation study to complete our submission to an upcoming top-tier venue.

@@ -1,6 +1,6 @@
 ---
 layout: content-post
-title: "CS Diversity Awards"
+title: "Presented as finalist in CS Diversity Awards at SFU"
 date:  2025-04-07
 tag: news
 ---
