@@ -37,7 +37,7 @@ skills:
 
   In addition to healthcare implementations, I contributed to dozens fo mCase deployments supporting child welfare agencies, working across domains with similar regulatory, ethical, and operational constraints. 
   
-  I also played a key role in establishing and leading a newly formed QA team spanning the U.S. and Canada, helping define testing practices, production monitoring practices, and quality standards for a growing suite of public-sector implementations.
+  I also played a key role as a founding membeor of a newly formed client success QA team spanning the U.S. and Canada, helping define testing practices, production monitoring practices, and quality standards for a growing suite of public-sector implementations.
 
   Across these projects, my work consistently involved translating policy and regulatory requirements into reliable, usable software—while collaborating closely with frontline staff, administrators, and program leadership to ensure systems aligned with real-world workflows and human needs.
 
@@ -57,7 +57,7 @@ skills:
   • Supported government healthcare programs serving 160,000+ low- and moderate-income residents  
   • Worked on systems that represented a significant portion of the organization’s delivery and services work during my tenure  
   • Contributed to 15+ public-sector mCase implementations, including child welfare systems  
-  • Helped establish and lead a cross-border QA team to improve system reliability and release quality  
+  • Founding member of a cross-border client success team to proactively monitor and improve system reliability and release quality  
   • Enabled frontline staff to focus on service delivery by reducing administrative complexity through robust workflow design  
 
   This experience shaped my approach to software as a socio-technical system, deeply informing my current interests in human-centered system design, public-sector technology, and complex institutional workflows.
