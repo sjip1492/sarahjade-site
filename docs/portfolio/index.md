@@ -1,6 +1,6 @@
 ---
-layout: portfolio
+layout: content-post
 title: "Portfolio"
-description: "Selected work across tangible interaction, prototyping, and research."
 # permalink: /portfolio/
 ---
+<p>Please contact me for details.</p>
